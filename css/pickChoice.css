@@ -78,3 +78,9 @@ body {
   border-width: 5em;
   border: #000000;
 }
+
+.error-output{
+  color: red;
+  font-size: 20px;
+  padding-bottom: 7em;
+}
