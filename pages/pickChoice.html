@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Powered TicTacToe App</title>
     <link rel="shortcut icon" href="../assets/TabLogo.png">
+    <link rel="stylesheet" href="../css/pickChoice.css">
+    <script defer src="../js/pickChoice.js"></script>
+    <script defer src="../siteProperties/siteProperties.js"></script>
 </head>
+
 <body>
-    
+    <div class="content">
+        <header class="header-content">
+            <h1 class="glow-header">Pick Your Choice</h1>
+        </header>
+        <div class="options">
+            <button id="cross" class="choice-button" onclick="selectChoice(this)">X</button>
+            <button id="circle" class="choice-button" onclick="selectChoice(this)">O</button>
+        </div>
+        <label class="error-output"></label>
+        <div class="showChoiceLabel">
+            <label class="label">Your Choice : </label>
+            <label id = "choiceChar" class="label"></label>
+        </div>
+        <button class="continue-button" onclick="continueOnClick()">Continue</button>
+    </div>
 </body>
+
 </html>
