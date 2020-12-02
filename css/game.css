@@ -1,0 +1,107 @@
+body{
+    margin: 0;
+    height: 100%;
+    background-color: #38033a;
+}
+.header{
+    padding: 15px 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    border: 0px solid #e3f031;
+    flex: 1;
+}
+.heading-image{
+    width: 50px;
+    height: 50px;
+}
+.heading-content{
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 200%;
+}
+.button {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0px 20px;
+}
+.goto-button{
+    font-size: 20px;
+    letter-spacing: 0px;
+    color: #ffffff;
+    opacity: 1;
+    background:#000000;
+    font-weight: 400;
+    min-width: 140px;
+    padding: 7px 7px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    cursor: default;
+}
+.play{
+    background-color: #dbf304;
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 100%;
+    text-align: center;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.play-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 100px;
+    flex: 20;
+}
+.line{
+    display: flex;
+    flex-direction: column;
+}
+.block{
+    background-color: #ffffff;
+    border: #000000;
+    margin: 3px;
+    align-self: center;
+    height: 110px;
+    width: 110px;
+}
+.player-info{
+    flex: 5;
+    align-self: center;
+    padding: 0px 50px;
+}
+.turn-info{
+    flex: 5;
+    align-self: center;
+    padding: 0px 50px;
+}
+.turn{
+    background-color: #dbf304;
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 150%;
+    min-width: 140px;
+    padding: 9px 9px;
+    margin: 3px;
+}
+.player{
+    background-color: #dbf304;
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 150%;
+    min-width: 140px;
+    padding: 9px 9px;
+    margin: 3px;
+}
