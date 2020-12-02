@@ -1,31 +1,68 @@
-.content{
-    background: linear-gradient(90deg, rgb(220, 121, 240) 0%, rgba(109, 9, 121, 1) 35%, 
-                rgba(45, 1, 62, 1) 100%);
-    padding: 2%;
-    margin: 2% 15%;
-    text-align: center;
+.content {
+  background: linear-gradient(90deg, rgb(220, 121, 240) 0%, rgba(109, 9, 121, 1) 35%,
+      rgba(45, 1, 62, 1) 100%);
+  padding: 2%;
+  margin: 2% 15%;
+  border-radius: 1em;
+  text-align: center;
 }
 
 body {
-    background: #c166eb7a;
+  background: #c166eb7a;
+}
+
+.glow {
+  font-size: 50px;
+  color: #ffffff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000,
+      0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
   }
-  
-  .glow {
-    font-size: 50px;
-    color: #ffffff;
-    text-align: center;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    animation: glow 1s ease-in-out infinite alternate;
+
+  to {
+    text-shadow: 0 0 20px #eeeeee, 0 0 30px #3b0819, 0 0 40px #ee2d6d, 0 0 50px #ff4da6,
+      0 0 60px #ec2165, 0 0 70px #ee2d6d, 0 0 80px #ee2d6d;
   }
-  
-  @-webkit-keyframes glow {
-    from {
-      text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 
-                   0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
-    }
-    to {
-      text-shadow: 0 0 20px #eeeeee, 0 0 30px #3b0819, 0 0 40px #ee2d6d, 0 0 50px #ff4da6, 
-                   0 0 60px #ec2165, 0 0 70px #ee2d6d, 0 0 80px #ee2d6d;
-    }
+}
+
+.options {
+  flex-direction: row;
+  padding: 1em;
+}
+
+.glow-button {
+  margin: 10%;
+ -webkit-animation: glow-button 1s ease-in-out infinite alternate;
+  -moz-animation: glow-button 1s ease-in-out infinite alternate;
+  animation: glow-button 1s ease-in-out infinite alternate;
+}
+
+button {
+  background-color: #bb8df8e3;
+  border-radius: 1em;
+  border: solid black;
+  border-width: 3px;
+  color: white;
+  padding: 30px 70px;
+  text-align: center;
+  font-size: 30px;
+}
+
+@-webkit-keyframes glow-button {
+  from {
+    text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000,
+      0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
   }
+
+  to {
+    text-shadow: 0 0 20px #eeeeee, 0 0 30px #f80a59, 0 0 40px #f80a59, 0 0 50px #f80a59,
+      0 0 60px #f80a59, 0 0 70px #f80a59, 0 0 80px #f80a59;
+  }
+}
