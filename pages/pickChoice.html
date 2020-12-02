@@ -7,6 +7,7 @@
     <title>AI Powered TicTacToe App</title>
     <link rel="shortcut icon" href="../assets/TabLogo.png">
     <link rel="stylesheet" href="../css/pickChoice.css">
+    <script defer src="../js/pickChoice.js"></script>
 </head>
 
 <body>
@@ -15,12 +16,12 @@
             <h1 class="glow-header">Pick Your Choice</h1>
         </header>
         <div class="options">
-            <button class="choice-button cross">X</button>
-            <button class="choice-button circle">O</button>
+            <button id="cross" class="choice-button" onclick="selectChoice(this)">X</button>
+            <button id="circle" class="choice-button" onclick="selectChoice(this)">O</button>
         </div>
         <div class="showChoiceLabel">
             <label class="label">Your Choice : </label>
-            <label class="label"></label>
+            <label id = "choiceChar" class="label"></label>
         </div>
         <button class="continue-button">Continue</button>
     </div>
