@@ -40,33 +40,16 @@ body {
   padding: 1em;
 }
 
-.glow-button {
+.choice-button {
   margin: 10%;
- -webkit-animation: glow-button 1s ease-in-out infinite alternate;
-  -moz-animation: glow-button 1s ease-in-out infinite alternate;
-  animation: glow-button 1s ease-in-out infinite alternate;
-}
-
-.glow-button {
   background-color: #ff6075e3;
   border-radius: 1em;
   border-width: 3px;
   color: white;
   padding: 30px 70px;
+  text-shadow: 2px 2px 8px #000000; 
   text-align: center;
-  font-size: 30px;
-}
-
-@-webkit-keyframes glow-button {
-  from {
-    text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000,
-      0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
-  }
-
-  to {
-    text-shadow: 0 0 20px #eeeeee, 0 0 30px #f80a59, 0 0 40px #f80a59, 0 0 50px #f80a59,
-      0 0 60px #f80a59, 0 0 70px #f80a59, 0 0 80px #f80a59;
-  }
+  font-size: 50px;
 }
 
 .continue-button {
@@ -77,4 +60,16 @@ body {
   font-family: 'Comic Sans MS';
   text-align: center;
   font-size: 30px;
+}
+
+.showChoiceLabel{
+  padding-bottom: 1em;
+  text-shadow: 2px 2px 8px #000000; 
+  color: #ffffff;
+  font-size: 3em;
+}
+
+.label{
+  border-width: 5em;
+  border: #000000;
 }
