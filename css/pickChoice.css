@@ -11,16 +11,19 @@ body {
   background: #c166eb7a;
 }
 
-.glow {
+.header-content{
+  font-family: 'Comic Sans MS';
+}
+.glow-header {
   font-size: 50px;
   color: #ffffff;
   text-align: center;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+  -webkit-animation: glow-header 1s ease-in-out infinite alternate;
+  -moz-animation: glow-header 1s ease-in-out infinite alternate;
+  animation: glow-header 1s ease-in-out infinite alternate;
 }
 
-@-webkit-keyframes glow {
+@-webkit-keyframes glow-header {
   from {
     text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000,
       0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
@@ -44,10 +47,9 @@ body {
   animation: glow-button 1s ease-in-out infinite alternate;
 }
 
-button {
-  background-color: #bb8df8e3;
+.glow-button {
+  background-color: #ff6075e3;
   border-radius: 1em;
-  border: solid black;
   border-width: 3px;
   color: white;
   padding: 30px 70px;
@@ -65,4 +67,14 @@ button {
     text-shadow: 0 0 20px #eeeeee, 0 0 30px #f80a59, 0 0 40px #f80a59, 0 0 50px #f80a59,
       0 0 60px #f80a59, 0 0 70px #f80a59, 0 0 80px #f80a59;
   }
+}
+
+.continue-button {
+  background-color: #c3a2f0e3;
+  border-radius: 1em;
+  color: rgb(0, 0, 0);
+  padding: 15px 20px;
+  font-family: 'Comic Sans MS';
+  text-align: center;
+  font-size: 30px;
 }
