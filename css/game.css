@@ -105,3 +105,20 @@ body{
     padding: 9px 9px;
     margin: 3px;
 }
+.cell{
+    text-align: center;
+    padding-top: 0.1em;
+    font-size: 5em;
+    line-height: normal;
+}
+.ml15 {
+    font-weight: 800;
+    font-size: 3.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+  }
+  
+  .ml15 .word {
+    display: inline-block;
+    line-height: 1em;
+  }
