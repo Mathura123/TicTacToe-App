@@ -70,9 +70,9 @@ body {
 .play-area {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     padding: 100px;
-    flex: 20;
+    flex: 5;
 }
 
 .line {
@@ -89,34 +89,40 @@ body {
     width: 110px;
     transition: ease-in;
 }
-
-.player-info {
+.help-info{
     flex: 5;
     align-self: center;
-    padding: 0px 50px;
+    display: flex;
+    flex-direction: row;
 }
-
-.turn-info {
+.player-info{
     flex: 5;
     align-self: center;
-    padding: 0px 50px;
+    justify-content: left;
 }
-
-.turn {
-    background-color: #dbf304;
+.player-name{
     font: normal normal bold 20px/25px Montserrat;
     font-family: "Montserrat", sans-serif;
     font-size: 150%;
+    color: #ffffff;
     min-width: 140px;
     padding: 9px 9px;
     margin: 3px;
 }
-
-.player {
-    background-color: #dbf304;
+.player-sign{
     font: normal normal bold 20px/25px Montserrat;
     font-family: "Montserrat", sans-serif;
     font-size: 150%;
+    color: #ffffff;
+    min-width: 140px;
+    padding: 9px 9px;
+    margin: 3px;
+}
+.computer-sign{
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 150%;
+    color: #ffffff;
     min-width: 140px;
     padding: 9px 9px;
     margin: 3px;
@@ -128,7 +134,7 @@ svg {
 
 .cross {
     stroke: #dbf304;
-    stroke-width: 7px;
+    stroke-width: 8px;
     stroke-dasharray: 226.274169921875px;
     stroke-dashoffset: -226.274169921875px;
     stroke-linejoin: round;
@@ -138,7 +144,7 @@ svg {
 
 .cross-shown {
     stroke: #dbf304;
-    stroke-width: 7px;
+    stroke-width: 8px;
     border-color: #000000;
     border-width: 12em;
     stroke-dasharray: 226.274169921875px;
@@ -149,7 +155,7 @@ svg {
 
 .circle {
     stroke: #dbf304;
-    stroke-width: 7px;
+    stroke-width: 8px;
     stroke-linejoin: round;
     stroke-dasharray: 263.93072509765625px;
     stroke-dashoffset: -263.93072509765625px;
@@ -159,7 +165,7 @@ svg {
 
 .circle-shown {
     stroke: #dbf304;
-    stroke-width: 7px;
+    stroke-width: 8px;
     stroke-dasharray: 263.93072509765625px;
     stroke-dashoffset: 0px;
     fill: transparent;

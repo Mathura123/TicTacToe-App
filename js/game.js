@@ -1,4 +1,4 @@
-let choice = 'O';
+let choice = 'X';
 
 function animateChar(node) {
   if(choice==='X'){
