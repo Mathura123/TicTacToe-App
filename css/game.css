@@ -61,7 +61,7 @@ body{
 .play-area{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     padding: 100px;
     flex: 20;
 }
@@ -83,18 +83,10 @@ body{
     padding: 0px 50px;
 }
 .turn-info{
-    flex: 5;
+    flex: 4;
     align-self: center;
-    padding: 0px 50px;
-}
-.turn{
-    background-color: #dbf304;
-    font: normal normal bold 20px/25px Montserrat;
-    font-family: "Montserrat", sans-serif;
-    font-size: 150%;
-    min-width: 140px;
-    padding: 9px 9px;
-    margin: 3px;
+    display: flex;
+    flex-direction: row;
 }
 .player{
     background-color: #dbf304;
