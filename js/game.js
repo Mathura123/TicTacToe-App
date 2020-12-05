@@ -1,5 +1,10 @@
-let choice = 'X';
+let choice = 'O';
 
 function animateChar(node) {
-  $(`.${node.id}`).toggleClass('cross-shown');
+  if(choice==='X'){
+    $(`.${node.id}.cross`).toggleClass('cross-shown')
+  }
+  if(choice==='O'){
+    $(`.${node.id}.circle`).toggleClass('circle-shown')
+  }
 }

@@ -146,3 +146,21 @@ svg {
     fill: transparent;
     transition-duration: 0.5s;
 }
+
+.circle {
+    stroke: #dbf304;
+    stroke-width: 7px;
+    stroke-linejoin: round;
+    stroke-dasharray: 263.93072509765625px;
+    stroke-dashoffset: -263.93072509765625px;
+    fill: transparent;
+    transition-duration: 0.5s;
+}
+
+.circle-shown {
+    stroke: #dbf304;
+    stroke-width: 7px;
+    stroke-dasharray: 263.93072509765625px;
+    stroke-dashoffset: 0px;
+    fill: transparent;
+}
