@@ -63,7 +63,7 @@ body{
     flex-direction: row;
     justify-content: left;
     padding: 100px;
-    flex: 20;
+    flex: 5;
 }
 .line{
     display: flex;
@@ -77,22 +77,40 @@ body{
     height: 110px;
     width: 110px;
 }
-.player-info{
+.help-info{
     flex: 5;
-    align-self: center;
-    padding: 0px 50px;
-}
-.turn-info{
-    flex: 4;
     align-self: center;
     display: flex;
     flex-direction: row;
 }
-.player{
-    background-color: #dbf304;
+.player-info{
+    flex: 5;
+    align-self: center;
+    justify-content: left;
+}
+.player-name{
     font: normal normal bold 20px/25px Montserrat;
     font-family: "Montserrat", sans-serif;
     font-size: 150%;
+    color: #ffffff;
+    min-width: 140px;
+    padding: 9px 9px;
+    margin: 3px;
+}
+.player-sign{
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 150%;
+    color: #ffffff;
+    min-width: 140px;
+    padding: 9px 9px;
+    margin: 3px;
+}
+.computer-sign{
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 150%;
+    color: #ffffff;
     min-width: 140px;
     padding: 9px 9px;
     margin: 3px;
