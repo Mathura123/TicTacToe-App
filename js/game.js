@@ -1,5 +1,4 @@
 let choice = 'X';
-
 function animateChar(node) {
   if(choice==='X'){
     $(`.${node.id}.cross`).toggleClass('cross-shown')
