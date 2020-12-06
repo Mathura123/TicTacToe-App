@@ -7,3 +7,9 @@ function animateChar(node) {
     $(`.${node.id}.circle`).toggleClass('circle-shown')
   }
 }
+function onAboutClick(){
+  window.location = site_properties.about_page;
+}
+function getRules(){
+  window.location = site_properties.rules_page;
+}

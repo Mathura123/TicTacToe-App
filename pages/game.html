@@ -7,106 +7,108 @@
   <link rel="shortcut icon" href="../assets/TabLogo.png">
   <link rel="stylesheet" href="../css/game.css">
   <script defer src="../js/game.js"></script>
+  <script defer src="../siteProperties/siteProperties.js"></script>
   <title>AI Powered TicTacToe App</title>
 </head>
-
 <body>
-
-  <header class="header">
-    <div class="heading">
-      <img class="heading-image" src="../assets/TabLogo.png" alt=" ">
-      <div class="heading-content"><b>TIC TAC TOE</b></div>
+    <header class="header">
+        <div class="heading">
+        <img class="heading-image" src="../assets/TabLogo.png" alt=" ">
+        <div class="heading-content"><b>TIC TAC TOE</b></div>
+        </div>
+        <div class="button">
+        <button class="about-button" onclick= "onAboutClick()">About Creaters</button>
+        </div>
+    </header>
+    <div class="play"><b>LET'S PLAY!!</b></div>
+    <div class="container">
+        <div class="help-info">
+        <a href="../pages/rules.html" class="help" onclick="getRules()">
+            <img src="../assets/helpboard.png" alt="" height="250px" width="250px">
+        </a>
+        </div>
+        <div class="play-area">
+        <div class="line">
+            <div id="block_0" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_0 cross" d="M20 100 L100 20" />
+                <path class="block_0 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_0 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg> 
+            </div>
+            <div id="block_3" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_3 cross" d="M20 100 L100 20" />
+                <path class="block_3 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_3 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg>
+            </div>
+            <div id="block_6" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_6 cross" d="M20 100 L100 20" />
+                <path class="block_6 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_6 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg> 
+            </div>
+        </div>
+        <div class="line">
+            <div id="block_1" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_1 cross" d="M20 100 L100 20" />
+                <path class="block_1 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_1 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg> 
+            </div>
+            <div id="block_4" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_4 cross" d="M20 100 L100 20" />
+                <path class="block_4 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_4 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg> 
+            </div>
+            <div id="block_7" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_7 cross" d="M20 100 L100 20" />
+                <path class="block_7 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_7 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg> 
+            </div>
+        </div>
+        <div class="line">
+            <div id="block_2" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_2 cross" d="M20 100 L100 20" />
+                <path class="block_2 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_2 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg> 
+            </div>
+            <div id="block_5" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_5 cross" d="M20 100 L100 20" />
+                <path class="block_5 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_5 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg> 
+            </div>
+            <div id="block_8" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
+                <g>
+                <path class="block_8 cross" d="M20 100 L100 20" />
+                <path class="block_8 cross" d="M100 100 L20 20" />
+                </g>
+                <circle class="block_8 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" /></svg> 
+            </div>
+        </div>
+        </div>
+        <div class="player-info">
+        <div class="player-name">PLAYER NAME: SIDDHI</div>
+        <div class="player-sign">YOUR SIGN: X</div>
+        <div class="computer-sign">COMPUTER SIGN: O</div>
+        </div>
     </div>
-    <div class="button">
-      <button class="goto-button about-button">About Creaters</button>
-      <button class="goto-button help-button">New User? <br> Sign Up</button>
+    <div>
+        <button  class="restart"><b>RESTART</b></button>
+        <button class="new-user"><b>New User? <br> Sign Up</b></button>
     </div>
-  </header>
-  <div class="play"><b>LET'S PLAY!!</b></div>
-  <div class="container">
-    <div class="help-info">
-      <a href="../pages/rules.html" class="help"><img src="../assets/helpboard.png" alt="" height="250px"
-          width="250px"></a>
-      <img class="brain" src="../assets/brain.png" alt="" height="250px" width="250px">
-    </div>
-    <div class="play-area">
-      <div class="line">
-        <div id="block_0" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_0 cross" d="M20 100 L100 20" />
-              <path class="block_0 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_0 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-        <div id="block_3" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_3 cross" d="M20 100 L100 20" />
-              <path class="block_3 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_3 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-        <div id="block_6" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_6 cross" d="M20 100 L100 20" />
-              <path class="block_6 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_6 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-      </div>
-      <div class="line">
-        <div id="block_1" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_1 cross" d="M20 100 L100 20" />
-              <path class="block_1 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_1 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-        <div id="block_4" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_4 cross" d="M20 100 L100 20" />
-              <path class="block_4 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_4 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-        <div id="block_7" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_7 cross" d="M20 100 L100 20" />
-              <path class="block_7 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_7 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-      </div>
-      <div class="line">
-        <div id="block_2" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_2 cross" d="M20 100 L100 20" />
-              <path class="block_2 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_2 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-        <div id="block_5" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_5 cross" d="M20 100 L100 20" />
-              <path class="block_5 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_5 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-        <div id="block_8" class="block" onclick="animateChar(this)"> <svg viewBox="0 0 120 120">
-            <g>
-              <path class="block_8 cross" d="M20 100 L100 20" />
-              <path class="block_8 cross" d="M100 100 L20 20" />
-            </g>
-            <circle class="block_8 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-          </svg> </div>
-      </div>
-    </div>
-    <div class="player-info">
-      <div class="player-name">PLAYER NAME: SIDDHI</div>
-      <div class="player-sign">YOUR SIGN: X</div>
-      <div class="computer-sign">COMPUTER SIGN: O</div>
-    </div>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>
