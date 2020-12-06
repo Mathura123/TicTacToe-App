@@ -17,6 +17,9 @@ function onAboutClick(){
 function getRules(){
   window.location = site_properties.rules_page;
 }
+function newUserSignup(){
+  window.location = site_properties.pickChoice_page;
+}
 function loadPlayerInfo(){
   let compChoice;
   if(choice==='X')
