@@ -71,7 +71,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: left;
-    padding: 100px;
+    padding: 60px;
     flex: 5;
 }
 
@@ -126,6 +126,9 @@ body {
     padding: 9px 9px;
     margin: 3px;
 }
+.new-game{
+    display: inline;
+}
 .restart {
     font-size: 20px;
     letter-spacing: 0px;
@@ -138,7 +141,28 @@ body {
     border: 4px solid #000000;
     border-radius: 3px;
     cursor: default;
-    margin-left: 720px;
+    margin-left: 615px;
+}
+.new-user{
+    font-size: 20px;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    background: #dbf304;
+    font-weight: 400;
+    min-width: 140px;
+    padding: 7px 7px;
+    border: 4px solid #000000;
+    border-radius: 3px;
+    cursor: default;
+}
+.footer {
+    background-color: #dbf304;
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 100%;
+    text-align: center;
+    margin-top: 50px;
 }
 svg {
     filter: drop-shadow(0.5px 0.5px 0px #111) drop-shadow(-0.5px 0.5px 0px #111) drop-shadow(0.5px -0.5px 0px #111) drop-shadow(-1px -1px 0px #111);
