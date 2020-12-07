@@ -18,13 +18,13 @@
       <div class="heading-content"><b>TIC TAC TOE</b></div>
     </div>
     <div class="button">
-      <button class="about-button" onclick="onAboutClick()">About Creaters</button>
+      <button class="about-button" id="about-button">About Creaters</button>
     </div>
   </header>
   <div class="play"><b>LET'S PLAY!!</b></div>
   <div class="container">
     <div class="help-info">
-      <a href="../pages/rules.html" class="help" onclick="getRules()">
+      <a class="help" id="help">
         <img src="../assets/helpboard.png" alt="" height="250px" width="250px">
       </a>
     </div>
@@ -121,10 +121,20 @@
     <div class="player-info" id="player-info">
     </div>
   </div>
-
   <footer class="footer"><b>CHALLENGE!! Win this game and send screenshot to the creator to win exciting prize</b>
   </footer>
+  <div class="modal-creators">
+    <div class="creators-contents">
+      <div class="creators-close">+</div>
+      <div>creators</div>
+    </div>
+  </div>
+  <div class="modal-help">
+    <div class="help-contents">
+      <div class="help-close">+</div>
+      <div>rules</div>
+    </div>
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
-
 </html>
