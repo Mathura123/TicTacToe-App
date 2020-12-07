@@ -186,16 +186,16 @@ body {
     opacity: 1;
     background: #dbf304;
     font-weight: 400;
-    min-width: 173px;
+    min-width: 172.5px;
     padding: 7px 7px;
     border: 4px solid #000000;
     border-radius: 7px;
     cursor: default;
-    margin-top: 4px;
+    margin-top: 7px;
 }
 
 .restart{
-    margin-left: 12%;
+    margin-left: 11.8%;
 }
 
 .new-user {
