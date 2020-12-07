@@ -17,7 +17,7 @@ body {
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    border: 0px solid #e3f031;
+    border: 0px solid #dbf304;
     flex: 1;
 }
 
@@ -191,7 +191,7 @@ body {
     border: 4px solid #000000;
     border-radius: 7px;
     cursor: default;
-    margin-top: 7px;
+    margin-top: 70px;
 }
 
 .restart{
