@@ -9,7 +9,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
   loadCurrentChanceInfo();
   setTimeout(() => document.getElementById("firstChance").style.opacity = "0", 5000);
 });
-
+document.getElementById('about-button').addEventListener("click", function() {
+  document.querySelector('.modal-creators').style.display = "flex";
+});
+document.querySelector('.creators-close').addEventListener("click", function() {
+  document.querySelector('.modal-creators').style.display = "none";
+});
+document.getElementById('help').addEventListener("click", function() {
+  document.querySelector('.modal-help').style.display = "flex";
+});
+document.querySelector('.help-close').addEventListener("click", function() {
+  document.querySelector('.modal-help').style.display = "none";
+});
 function animateChar(node) {
   if (choice === 'X') {
     $(`.${node.id}.cross`).toggleClass('cross-shown')
@@ -18,12 +29,7 @@ function animateChar(node) {
     $(`.${node.id}.circle`).toggleClass('circle-shown')
   }
 }
-
-function onAboutClick() {
-  window.location = site_properties.about_page;
-}
-
-function getRules() {
+function getRules(){
   window.location = site_properties.rules_page;
 }
 
