@@ -298,11 +298,14 @@ svg {
     align-self: left;
     display: inline;
     justify-content: left;
-    align-items: left;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 }
 .creator-img{
     border-radius: 50%;
     max-width: 100px;
+    padding: 10px;
 }
 .modal-help {
 	background-color: rgba(0, 0, 5, 0.8);
