@@ -20,7 +20,9 @@ function selectChoice(button) {
 function continueOnClick() {
     if (choiceBool === true) {
         window.location.replace(site_properties.game_page);
-        choice = 'X';
+        choice = document.querySelector("#choiceChar").textContent;
+        localStorage.removeItem('userChoice')
+        localStorage.setItem('userChoice', choice);
     }
     else{
         document.querySelector(".error-output").textContent = 'You need to Choose any one Option'; 

@@ -1,5 +1,5 @@
 let playerName = 'Mathura'
-let choice = 'O';
+let choice =  localStorage.getItem('userChoice');
 let chances = ['User','Computer'];
 let firstChance = chances[0];
 let currentChance = chances[0];
