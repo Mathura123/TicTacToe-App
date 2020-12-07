@@ -269,20 +269,40 @@ svg {
 .creators-contents {
 	height: 500px;
 	width: 800px;
-	background-color: #ddeb66;
-	text-align: center;
-	padding: 20px;
+	background-color: #000000ef;
+	text-align: left;
+	padding: 10px;
 	position: relative;
 	border-radius: 4px;
+}
+.creators-heading{
+    text-align: center;
 }
 .creators-close {
 	position: absolute;
 	top: 0;
 	right: 10px;
 	font-size: 42px;
-	color: #333;
+	color: rgb(255, 255, 255);
 	transform: rotate(45deg);
 	cursor: pointer;
+}
+.creators{
+    padding: 2%;
+    color:#ffffff;;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.creator{
+    align-self: left;
+    display: inline;
+    justify-content: left;
+    align-items: left;
+}
+.creator-img{
+    border-radius: 50%;
+    max-width: 100px;
 }
 .modal-help {
 	background-color: rgba(0, 0, 5, 0.8);
@@ -299,7 +319,7 @@ svg {
 .help-contents {
 	height: 500px;
 	width: 500px;
-    background:linear-gradient(rgba(0,0,0,0.7),
+    background:linear-gradient(rgba(0,0,0,1),
     rgba(0,0,0,0.4)),url('../assets/helpbackground.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -318,6 +338,6 @@ svg {
 }
 .rules{
     padding: 10%;
-    color: #e6ff05bb;
+    color:#e6ff05e0;;
     font-size: 25px;
 }
