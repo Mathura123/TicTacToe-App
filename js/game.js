@@ -8,18 +8,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
   loadFirstChanceInfo();
   loadCurrentChanceInfo();
   setTimeout(()=>document.getElementById("firstChance").style.opacity = "0",5000);
-  document.getElementById('about-button').addEventListener("click", function() {
-    document.querySelector('.modal-creators').style.display = "flex";
-  });
-  document.querySelector('.creators-close').addEventListener("click", function() {
-    document.querySelector('.modal-creators').style.display = "none";
-  });
-  document.getElementById('help').addEventListener("click", function() {
-    document.querySelector('.modal-help').style.display = "flex";
-  });
-  document.querySelector('.help-close').addEventListener("click", function() {
-    document.querySelector('.modal-help').style.display = "none";
-  });
+});
+document.getElementById('about-button').addEventListener("click", function() {
+  document.querySelector('.modal-creators').style.display = "flex";
+});
+document.querySelector('.creators-close').addEventListener("click", function() {
+  document.querySelector('.modal-creators').style.display = "none";
+});
+document.getElementById('help').addEventListener("click", function() {
+  document.querySelector('.modal-help').style.display = "flex";
+});
+document.querySelector('.help-close').addEventListener("click", function() {
+  document.querySelector('.modal-help').style.display = "none";
 });
 function animateChar(node) {
   if(choice==='X'){

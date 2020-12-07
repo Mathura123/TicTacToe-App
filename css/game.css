@@ -291,16 +291,19 @@ svg {
 	position: absolute;
 	top: 0;
 	display: none;
-	justify-content: center;
-	align-items: center;
+	justify-content: left;
+    align-items: center;
+    padding: 30px;
 }
 
 .help-contents {
 	height: 500px;
-	width: 800px;
-	background-color: #ddeb66;
+	width: 500px;
+    background:linear-gradient(rgba(0,0,0,0.7),
+    rgba(0,0,0,0.4)),url('../assets/helpbackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 	text-align: left;
-	padding: 20px;
 	position: relative;
 	border-radius: 4px;
 }
@@ -312,4 +315,9 @@ svg {
 	color: #333;
 	transform: rotate(45deg);
 	cursor: pointer;
+}
+.rules{
+    padding: 10%;
+    color: #e6ff05bb;
+    font-size: 25px;
 }
