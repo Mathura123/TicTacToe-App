@@ -3,6 +3,18 @@ choice = localStorage.getItem('userChoice');
 let chances = ['User', 'Computer'];
 let firstChance = chances[0];
 let currentChance = chances[0];
+let winPosibilities =[[1,2,3],
+                      [4,5,6],
+                      [7,8,9],
+                      [1,4,7],
+                      [2,5,8],
+                      [3,6,9],
+                      [1,5,9],
+                      [3,5,7]
+];
+let tiePossibility = [1,2,3,4,5,6,7,8,9];
+let userArray = [];
+let computerArray = [];
 window.addEventListener('DOMContentLoaded', (event) => {
   loadPlayerInfo();
   loadFirstChanceInfo();
@@ -22,6 +34,12 @@ document.querySelector('.help-close').addEventListener("click", function () {
   document.querySelector('.modal-help').style.display = "none";
 });
 
+function workOnCell(node){
+  animateChar(node);
+  addCellIntoUserArray(node);
+  getGameSituation();
+}
+
 function animateChar(node) {
   if (choice === 'X') {
     $(`.${node.id}.cross`).addClass('cross-shown')
@@ -29,6 +47,35 @@ function animateChar(node) {
   if (choice === 'O') {
     $(`.${node.id}.circle`).addClass('circle-shown')
   }
+}
+
+function addCellIntoUserArray(node){
+      let selectedCellIndex = parseInt(node.id.charAt(node.id.length - 1));
+      userArray.push(selectedCellIndex+1);
+      getGameSituation();
+}
+
+function getGameSituation(){
+      let totalSelects = userArray.concat(computerArray);
+      totalSelects.sort();
+      if(winPosibilities.some(arr => arr.every(cell => userArray.includes(cell)))){
+        displayGameSituationInLabel("WIN");
+      }
+      else if(winPosibilities.some(arr => arr.every(cell => computerArray.includes(cell)))){
+        displayGameSituationInLabel("LOSE");
+      }
+      else if(JSON.stringify(tiePossibility)===JSON.stringify(totalSelects)){
+        displayGameSituationInLabel("TIED");
+      }
+}
+
+function displayGameSituationInLabel(situation){
+        if(situation==="WIN" || situation === "LOSE"){
+              document.getElementById("gameSituation").textContent = `YOU ${situation}`;
+        }
+        else if(situation=="TIE"){
+          document.getElementById("gameSituation").textContent = `GAME ${situation}`;
+        }
 }
 
 function newUserSignup() {
