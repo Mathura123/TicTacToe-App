@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   loadPlayerInfo();
   loadFirstChanceInfo();
   loadCurrentChanceInfo();
-  setTimeout(() => document.getElementById("firstChance").style.opacity = "0", 5000);
+  setTimeout(() => document.getElementById("firstChance").style.opacity = "0", 8000);
 });
 document.getElementById('about-button').addEventListener("click", function () {
   document.querySelector('.modal-creators').style.display = "flex";
