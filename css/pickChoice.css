@@ -138,6 +138,10 @@ input[type=text] {
   color: white;
 }
 
+input[type=text]::placeholder{
+  color: #ffffff;
+  opacity: 0.7;
+}
 input[type=text]:focus {
   outline: none;
 }
