@@ -24,10 +24,10 @@ document.querySelector('.help-close').addEventListener("click", function () {
 
 function animateChar(node) {
   if (choice === 'X') {
-    $(`.${node.id}.cross`).toggleClass('cross-shown')
+    $(`.${node.id}.cross`).addClass('cross-shown')
   }
   if (choice === 'O') {
-    $(`.${node.id}.circle`).toggleClass('circle-shown')
+    $(`.${node.id}.circle`).addClass('circle-shown')
   }
 }
 
