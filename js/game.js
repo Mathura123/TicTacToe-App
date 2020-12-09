@@ -85,6 +85,9 @@ function newUserSignup() {
 function restart() {
   $(".cross-shown").removeClass("cross-shown");
   $(".circle-shown").removeClass("circle-shown");
+  userArray = [];
+  computerArray = [];
+  document.getElementById("gameSituation").textContent = '';
 }
 
 function loadPlayerInfo() {
