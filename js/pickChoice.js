@@ -44,3 +44,8 @@ $('input').on('focusout', function () {
         $(this).parent().find('label').removeClass('active');
     }
 });
+$(document).on('keypress',function(e) {
+    if(e.which == 13) {
+        continueOnClick();
+    }
+});
