@@ -102,6 +102,8 @@ body {
 
 div.userName div {
   position: absolute;
+  margin-left: 0px;
+  margin-right: 920px;
 }
 
 label[for="name"] {
