@@ -34,18 +34,8 @@ function continueOnClick() {
         document.querySelector(".error-output").textContent = 'Name is required';
     }
 }
-
-$('input').on('focusin', function () {
-    $(this).parent().find('label').addClass('active');
-});
-
-$('input').on('focusout', function () {
-    if (!this.value) {
-        $(this).parent().find('label').removeClass('active');
-    }
-});
-$(document).on('keypress',function(e) {
-    if(e.which == 13) {
+$(document).on('keypress', function (e) {
+    if (e.which == 13) {
         continueOnClick();
     }
 });
