@@ -108,7 +108,7 @@ label[for="name"] {
   position: absolute;
   font-size: 25px;
   margin-top: 18px;
-  margin-left: 85%;
+  margin-left: 0%;
   width: 250px;
   -webkit-transition: top .2s ease-in-out, font-size .5s ease-in-out;
   transition: top .2s ease-in-out, font-size .5s ease-in-out;
