@@ -30,7 +30,7 @@ function continueOnClick() {
     } else if (!choiceBool) {
         document.querySelector(".error-output").textContent = 'You need to Choose any one Option';
     } else {
-        document.getElementById('error-output').style.marginLeft = "28.7%";
+        // document.getElementById('error-output').style.marginLeft = "";
         document.querySelector(".error-output").textContent = 'Name is required';
     }
 }
