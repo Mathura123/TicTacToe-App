@@ -17,7 +17,6 @@ let userArray = [];
 let computerArray = [];
 window.addEventListener('DOMContentLoaded', (event) => {
   loadPlayerInfo();
-  setTimeout(() => document.getElementById("firstChance").style.opacity = "0", 8000);
 });
 document.getElementById('about-button').addEventListener("click", function () {
   document.querySelector('.modal-creators').style.display = "flex";
