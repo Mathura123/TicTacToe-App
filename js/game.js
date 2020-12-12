@@ -42,15 +42,15 @@ function workOnCell(node){
 
 function animateChar(node) {
   if (choice === 'X') {
-    $(`.${node.id}.cross`).addClass('cross-shown')
+    $(`.${node}.cross`).addClass('cross-shown')
   }
   if (choice === 'O') {
-    $(`.${node.id}.circle`).addClass('circle-shown')
+    $(`.${node}.circle`).addClass('circle-shown')
   }
 }
 
 function addCellIntoUserArray(node){
-      let selectedCellIndex = parseInt(node.id.charAt(node.id.length - 1));
+      let selectedCellIndex = parseInt(node.charAt(node.length - 1));
       userArray.push(selectedCellIndex+1);
       getGameSituation();
 }
@@ -108,10 +108,10 @@ function loadPlayerInfo() {
 }
 
 function loadFirstChanceInfo() {
-  document.querySelector('.firstChance').innerHTML = `${firstChance} got first chance`;
+  document.querySelector('#firstChance').innerHTML = `${firstChance} got first chance`;
 }
 
 function loadCurrentChanceInfo() {
   document.getElementById("currentChance").style.visibility = "visible";
-  document.querySelector('.currentChance').innerHTML = `It's ${currentChance}'s turn`;
+  document.querySelector('#currentChance').innerHTML = `It's ${currentChance}'s turn`;
 }

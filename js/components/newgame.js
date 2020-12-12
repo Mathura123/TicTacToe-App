@@ -1,12 +1,5 @@
-'use strict';
 
-class NewGame extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
+function NewGame(props) {
     return (
       <div>
         <button className="restart" onClick={restart}>
@@ -17,7 +10,6 @@ class NewGame extends React.Component {
         </button>
       </div>
     );
-  }
 }
 const domContainer = document.querySelector('#newGame');
 ReactDOM.render(<NewGame/>, domContainer);

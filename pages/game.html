@@ -32,102 +32,7 @@
         <img src="../assets/helpboard.png" alt="" height="250px" width="250px" />
       </a>
     </div>
-    <div class="centerBody">
-      <div class="chanceInfo">
-        <label id="firstChance" class="firstChance"></label>
-        <label id="currentChance" class="currentChance"></label>
-      </div>
-      <div class="play-area">
-        <div class="line">
-          <div id="block_0" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_0 cross" d="M20 100 L100 20" />
-                <path class="block_0 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_0 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-          <div id="block_3" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_3 cross" d="M20 100 L100 20" />
-                <path class="block_3 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_3 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-          <div id="block_6" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_6 cross" d="M20 100 L100 20" />
-                <path class="block_6 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_6 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-        </div>
-        <div class="line">
-          <div id="block_1" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_1 cross" d="M20 100 L100 20" />
-                <path class="block_1 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_1 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-          <div id="block_4" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_4 cross" d="M20 100 L100 20" />
-                <path class="block_4 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_4 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-          <div id="block_7" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_7 cross" d="M20 100 L100 20" />
-                <path class="block_7 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_7 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-        </div>
-        <div class="line">
-          <div id="block_2" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_2 cross" d="M20 100 L100 20" />
-                <path class="block_2 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_2 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-          <div id="block_5" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_5 cross" d="M20 100 L100 20" />
-                <path class="block_5 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_5 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-          <div id="block_8" class="block" onclick="workOnCell(this)">
-            <svg viewBox="0 0 120 120">
-              <g>
-                <path class="block_8 cross" d="M20 100 L100 20" />
-                <path class="block_8 cross" d="M100 100 L20 20" />
-              </g>
-              <circle class="block_8 circle" r="42" cy="60" cx="60" fill="transparent" strokeWidth="6" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <label id="gameSituation"></label>
-      <div id="newGame"></div>
+    <div id="centerBody">
     </div>
     <div class="player-info" id="player-info"></div>
   </div>
@@ -183,7 +88,9 @@
       </div>
     </div>
   </div>
+  <script type="text/babel" src="../js/components/grid.js"></script>
   <script type="text/babel" src="../js/components/newGame.js"></script>
+  <script type="text/babel" src="../js/components/centerBody.js"></script>
 </body>
 
 </html>
