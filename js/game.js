@@ -17,8 +17,6 @@ let userArray = [];
 let computerArray = [];
 window.addEventListener('DOMContentLoaded', (event) => {
   loadPlayerInfo();
-  loadFirstChanceInfo();
-  loadCurrentChanceInfo();
   setTimeout(() => document.getElementById("firstChance").style.opacity = "0", 8000);
 });
 document.getElementById('about-button').addEventListener("click", function () {
