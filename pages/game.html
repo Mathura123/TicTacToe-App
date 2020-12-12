@@ -190,14 +190,7 @@
           </div>
         </div>
         <label id="gameSituation"></label>
-        <div class="new-game">
-          <div id="restart_button_container">
-            <button class="restart" onclick="restart()"><b>RESTART</b></button>
-          </div>
-          <button class="new-user" onclick="newUserSignup()">
-            <b>New User?</b>
-          </button>
-        </div>
+        <div class="newgame"></div>
       </div>
       <div class="player-info" id="player-info"></div>
     </div>
@@ -257,15 +250,19 @@
         </div>
       </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
-      src="https://unpkg.com/react@17/umd/react.development.js"
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
       crossorigin
     ></script>
     <script
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
       crossorigin
     ></script>
-    <script src="../js/restart_button.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" src="../js/newgame.js"></script>
+    <script type="text/babel">
+      ReactDOM.render(<newgame />, document.querySelector(".newgame"));
+    </script>
   </body>
 </html>
