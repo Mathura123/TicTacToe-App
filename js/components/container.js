@@ -1,8 +1,8 @@
 function HelpInfo(props) {
     return ( 
-        <div class="help-info">
-        <a class="help" id="help">
-            <img src="../assets/helpboard.png" alt="" height="250px" width="250px" />
+        <div className="help-info">
+        <a className="help" id="help">
+            <img src="../assets/helpboard.png" alt="" height="250px" width="250px" onClick={Help}/>
         </a>
         </div>
     );
@@ -13,13 +13,13 @@ class PlayerInfo extends React.Component {
     }
     render(){
         return ( 
-            <div class="player-info" id="player-info"></div>
+            <div className="player-info" id="player-info"></div>
         );
     }
 }
 function Container(props){
     return(
-        <div class="container">
+        <div className="container">
             <HelpInfo/>
             <CenterBody/>
             <PlayerInfo/>
@@ -27,5 +27,5 @@ function Container(props){
     )
 }
 
-const domContainer = document.querySelector('#container');
+const domContainer = document.querySelector('.container');
 ReactDOM.render(<Container/>, domContainer);
