@@ -15,9 +15,6 @@ let winPosibilities =[[1,2,3],
 let tiePossibility = [1,2,3,4,5,6,7,8,9];
 let userArray = [];
 let computerArray = [];
-window.addEventListener('DOMContentLoaded', (event) => {
-  loadPlayerInfo();
-});
 document.getElementById('about-button').addEventListener("click", function () {
   document.querySelector('.modal-creators').style.display = "flex";
 });

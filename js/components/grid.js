@@ -47,5 +47,3 @@ function PlayArea(props){
         </div>
     )
 }
-{/* const domContainer = document.querySelector('.centerBody');
-ReactDOM.render(<PlayArea/>, domContainer); */}

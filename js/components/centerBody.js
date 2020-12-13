@@ -3,7 +3,7 @@ class ChanceInfo extends React.Component {
         loadFirstChanceInfo();
         loadCurrentChanceInfo();
         setTimeout(() => document.getElementById("firstChance").style.opacity = "0", 8000);
-      }
+    }
     render(){
         return ( 
             <div className="chanceInfo">
@@ -28,6 +28,3 @@ function CenterBody(props) {
         </div>
     );
 }
-
-const domContainer = document.querySelector('#centerBody');
-ReactDOM.render(<CenterBody/>, domContainer);
