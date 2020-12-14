@@ -1,8 +1,12 @@
+import {AboutCreators} from '../game.js'
+import TabLogo from '../../assets/TabLogo.png'
+import '../../css/index.css';
+
 function Header(props) {
   return (
-    <>
+    <header class="header" id="header">
       <div className="heading">
-        <img className="heading-image" src="../assets/TabLogo.png" alt=" " />
+        <img className="heading-image" src={TabLogo} alt=" " />
         <div className="heading-content">
           <b>TIC TAC TOE</b>
         </div>
@@ -12,8 +16,8 @@ function Header(props) {
           About Creaters
         </button>
       </div>
-    </>
+      </header>
   );
 }
-const domContainer = document.querySelector("#header");
-ReactDOM.render(<Header />, domContainer);
+
+export default Header;

@@ -1,3 +1,11 @@
+import {CreatorsClose} from '../game.js'
+import {HelpClose} from '../game.js'
+import siddhi from '../../assets/siddhi.jpeg'
+import mathura from '../../assets/mathura.jpeg'
+import '../../css/index.css';
+import '../game.js'
+
+
 function Creators(props) {
   return (
     <div className="modal-creators">
@@ -13,7 +21,7 @@ function Creators(props) {
           </div>
           <br />
           <div className="creator">
-            <img src="../assets/siddhi.jpeg" alt="" className="creator-img" />
+            <img src={siddhi} alt="" className="creator-img" />
             <b>SIDDHI SETH</b>
           </div>
           <p>
@@ -22,7 +30,7 @@ function Creators(props) {
             Completed Btech in Electrical Engineering from NIT Bhopal.
           </p>
           <div className="creator">
-            <img src="../assets/mathura.jpeg" alt="" className="creator-img" />
+            <img src={mathura} alt="" className="creator-img" />
             <b>MATHURA DAS</b>
           </div>
           <p>
@@ -66,11 +74,10 @@ function Rules(props) {
 }
 function Popups(props) {
   return (
-    <>
+    <div id="popups">
       <Creators />
       <Rules />
-    </>
+    </div>
   );
 }
-const domContainer = document.querySelector("#popups");
-ReactDOM.render(<Popups />, domContainer);
+export default Popups;

@@ -1,3 +1,6 @@
+import {workOnCell} from '../game.js'
+import '../../css/index.css';
+
 function CrossPath(props) {
     return ( 
         <g>
@@ -48,3 +51,4 @@ function PlayArea(props){
     )
 }
 
+export default PlayArea;

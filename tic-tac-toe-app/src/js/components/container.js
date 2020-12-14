@@ -1,9 +1,16 @@
+import CenterBody from './centerBody';
+import {Help} from '../game.js';
+import {loadPlayerInfo} from '../game.js'
+import React from 'react';
+import helpboard from '../../assets/helpboard.png'
+import '../../css/index.css';
+
 function HelpInfo(props) {
     return ( 
         <div className="help-info">
-        <a className="help" id="help">
-            <img src="../assets/helpboard.png" alt="" height="250px" width="250px" onClick={Help}/>
-        </a>
+            <div className="help" id="help">
+                <img src={helpboard} alt="" height="250px" width="250px" onClick={Help}/>
+            </div>
         </div>
     );
 }
@@ -19,7 +26,7 @@ class PlayerInfo extends React.Component {
 }
 function Container(props){
     return(
-        <div className="container">
+        <div class="container" id="container">
             <HelpInfo/>
             <CenterBody/>
             <PlayerInfo/>
@@ -27,5 +34,4 @@ function Container(props){
     )
 }
 
-const domContainer = document.querySelector('.container');
-ReactDOM.render(<Container/>, domContainer);
+export default Container;

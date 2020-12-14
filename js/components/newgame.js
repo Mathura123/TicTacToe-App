@@ -10,5 +10,3 @@ function NewGame(props) {
     </div>
   );
 }
-const domContainer = document.querySelector("#newGame");
-ReactDOM.render(<NewGame />, domContainer);

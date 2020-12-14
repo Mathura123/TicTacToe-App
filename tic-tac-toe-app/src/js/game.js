@@ -1,5 +1,7 @@
+import $ from 'jquery';
+
 let playerName = localStorage.getItem("userName");
-choice = localStorage.getItem("userChoice");
+let choice = localStorage.getItem("userChoice");
 let chances = ["User", "Computer"];
 let firstChance = chances[0];
 let currentChance = chances[0];
@@ -17,7 +19,7 @@ let tiePossibility = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let userArray = [];
 let computerArray = [];
 
-function AboutCreators() {
+export function AboutCreators() {
   document
     .getElementById("about-button")
     .addEventListener("click", function () {
@@ -25,7 +27,7 @@ function AboutCreators() {
     });
 }
 
-function CreatorsClose() {
+export function CreatorsClose() {
   document
     .querySelector(".creators-close")
     .addEventListener("click", function () {
@@ -33,19 +35,19 @@ function CreatorsClose() {
     });
 }
 
-function Help() {
+export function Help() {
   document.getElementById("help").addEventListener("click", function () {
     document.querySelector(".modal-help").style.display = "flex";
   });
 }
 
-function HelpClose() {
+export function HelpClose() {
   document.querySelector(".help-close").addEventListener("click", function () {
     document.querySelector(".modal-help").style.display = "none";
   });
 }
 
-function workOnCell(node) {
+export function workOnCell(node) {
   animateChar(node);
   addCellIntoUserArray(node);
   getGameSituation();
@@ -87,16 +89,16 @@ function getGameSituation() {
 function displayGameSituationInLabel(situation) {
   if (situation === "WIN" || situation === "LOSE") {
     document.getElementById("gameSituation").textContent = `YOU ${situation}`;
-  } else if (situation == "TIE") {
+  } else if (situation === "TIE") {
     document.getElementById("gameSituation").textContent = `GAME ${situation}`;
   }
 }
 
-function newUserSignup() {
-  window.location = site_properties.pickChoice_page;
+export function newUserSignup() {
+  window.location = './pickChoice.html';
 }
 
-function restart() {
+export function restart() {
   $(".cross-shown").removeClass("cross-shown");
   $(".circle-shown").removeClass("circle-shown");
   userArray = [];
@@ -104,7 +106,7 @@ function restart() {
   document.getElementById("gameSituation").textContent = "";
 }
 
-function loadPlayerInfo() {
+export function loadPlayerInfo() {
   let compChoice;
   if (choice === "X") compChoice = "O";
   else if (choice === "O") compChoice = "X";
@@ -118,13 +120,13 @@ function loadPlayerInfo() {
   document.querySelector("#player-info").innerHTML = innerHtml;
 }
 
-function loadFirstChanceInfo() {
+export function loadFirstChanceInfo() {
   document.querySelector(
     "#firstChance"
   ).innerHTML = `${firstChance} got first chance`;
 }
 
-function loadCurrentChanceInfo() {
+export function loadCurrentChanceInfo() {
   document.getElementById("currentChance").style.visibility = "visible";
   document.querySelector(
     "#currentChance"
