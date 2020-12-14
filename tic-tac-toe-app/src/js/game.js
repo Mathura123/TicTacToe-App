@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from "jquery";
 
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
@@ -25,6 +25,11 @@ export function AboutCreators() {
     .addEventListener("click", function () {
       document.querySelector(".modal-creators").style.display = "flex";
     });
+}
+export function PickChoice() {
+  document.getElementById("new-user").addEventListener("click", function () {
+    document.querySelector(".content").style.display = "flex";
+  });
 }
 
 export function CreatorsClose() {
@@ -92,10 +97,6 @@ function displayGameSituationInLabel(situation) {
   } else if (situation === "TIE") {
     document.getElementById("gameSituation").textContent = `GAME ${situation}`;
   }
-}
-
-export function newUserSignup() {
-  window.location = './pickChoice.html';
 }
 
 export function restart() {

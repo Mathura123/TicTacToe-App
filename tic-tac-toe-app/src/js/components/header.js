@@ -1,7 +1,6 @@
-import {AboutCreators} from '../game.js'
-import TabLogo from '../../assets/TabLogo.png'
-import '../../css/index.css';
-
+import { AboutCreators } from "../game.js";
+import TabLogo from "../../assets/TabLogo.png";
+import "../../css/pickChoice.css";
 function Header(props) {
   return (
     <header class="header" id="header">
@@ -12,11 +11,15 @@ function Header(props) {
         </div>
       </div>
       <div className="button">
-        <button className="about-button" id="about-button" onClick={AboutCreators}>
+        <button
+          className="about-button"
+          id="about-button"
+          onClick={AboutCreators}
+        >
           About Creaters
         </button>
       </div>
-      </header>
+    </header>
   );
 }
 

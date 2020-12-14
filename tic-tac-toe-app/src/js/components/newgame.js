@@ -1,7 +1,6 @@
-import {restart} from '../game.js'
-import {newUserSignup} from '../game.js'
-import '../../css/index.css';
-import '../game.js'
+import { PickChoice, restart } from "../game.js";
+import "../../css/index.css";
+import "../game.js";
 
 function NewGame(props) {
   return (
@@ -9,10 +8,9 @@ function NewGame(props) {
       <button className="restart" onClick={restart}>
         <b>RESTART</b>
       </button>
-      <a href="../../public/pickChoice.html"><button className="new-user" onClick={newUserSignup}>
+      <button className="new-user" id="new-user" onClick={PickChoice}>
         <b>New User?</b>
       </button>
-      </a>
     </div>
   );
 }
