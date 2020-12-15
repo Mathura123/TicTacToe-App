@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let chances = ["User", "Computer"];
-const random = Math.floor(Math.random() * chances.length);
+let random = Math.floor(Math.random() * chances.length);
 let firstChance = chances[random];
 let currentChance = chances[0];
 let winPosibilities = [
@@ -28,8 +28,12 @@ export function UpdateNameAndChoice(){
     playerName = localStorage.getItem("userName");
     choice = localStorage.getItem("userChoice");
     document.querySelector(".content").style.display = "none";
+    random = Math.floor(Math.random() * chances.length)
+    firstChance = chances[random];
     restart();
     loadPlayerInfo();
+    // setTimeout(() => (document.getElementById("firstChance").style.opacity = "0"),8000);
+    loadFirstChanceInfo();
   }
 export function AboutCreators() {
   document

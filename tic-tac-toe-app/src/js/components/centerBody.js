@@ -9,10 +9,10 @@ class ChanceInfo extends React.Component {
   componentDidMount() {
     loadFirstChanceInfo();
     loadCurrentChanceInfo();
-    setTimeout(
-      () => (document.getElementById("firstChance").style.opacity = "0"),
-      8000
-    );
+    // setTimeout(
+    //   () => (document.getElementById("firstChance").style.opacity = "0"),
+    //   8000
+    // );
   }
   render() {
     return (

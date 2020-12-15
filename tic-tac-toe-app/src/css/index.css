@@ -120,20 +120,20 @@ body {
 
 .firstChance {
   margin-top: 6%;
-  transition-duration: 3s;
+  /* transition-duration: 3s; */
 }
 
 .currentChance {
   margin-bottom: 1px;
 }
-
+/* 
 .firstChance {
   animation: opacity 3s ease-in-out;
   -webkit-animation: opacity 3s ease-in-out;
   -moz-animation: opacity 3s ease-in-out;
   -o-animation: opacity 3s ease-in-out;
   -ms-animation: opacity 3s ease-in-out;
-}
+} */
 
 .player-info {
   flex: 5;
