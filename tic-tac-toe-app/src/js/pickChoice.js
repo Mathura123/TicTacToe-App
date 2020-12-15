@@ -3,20 +3,34 @@ let userName = "User";
 var choice;
 window.addEventListener("DOMContentLoaded", (event) => {});
 
-function selectChoice(button) {
-  if (button.id === "cross") {
+export function selectChoice(buttonId) {
+  if (buttonId === "cross") {
     choiceBool = true;
-    document.querySelector("#choiceChar").textContent = "X";
-    document.querySelector(".error-output").textContent = "";
+    // document.querySelector("#choiceChar").textContent = "X";
+    let element = document.querySelector("#choiceChar")
+    if (element) {
+        element.textContent = "X";
+    }
+    let element2 = document.querySelector(".error-output")
+    if(element2){
+      element2.textContent = "";
+    }
   }
-  if (button.id === "circle") {
+  if (buttonId === "circle") {
     choiceBool = true;
-    document.querySelector("#choiceChar").textContent = "O";
-    document.querySelector(".error-output").textContent = "";
+    // document.querySelector("#choiceChar").textContent = "O";
+    let element = document.querySelector("#choiceChar")
+    if (element) {
+        element.textContent = "X";
+    }
+    let element2 = document.querySelector(".error-output")
+    if(element2){
+      element2.textContent = "";
+    }
   }
 }
 
-function continueOnClick() {
+export function continueOnClick() {
   if (choiceBool === true && document.getElementById("name").value) {
     choice = document.querySelector("#choiceChar").textContent;
     userName = document.getElementById("name").value;
@@ -32,8 +46,8 @@ function continueOnClick() {
     document.querySelector(".error-output").textContent = "Name is required";
   }
 }
-document.on("keypress", function (e) {
-  if (e.which === 13) {
-    continueOnClick();
-  }
-});
+// document.on("keypress", function (e) {
+//   if (e.which === 13) {
+//     continueOnClick();
+//   }
+// });

@@ -1,9 +1,14 @@
 import $ from "jquery";
 
+window.addEventListener("DOMContentLoaded", (event) => {
+  document.querySelector(".content").style.display = "flex";
+});
+
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let chances = ["User", "Computer"];
-let firstChance = chances[0];
+const random = Math.floor(Math.random() * chances.length);
+let firstChance = chances[random];
 let currentChance = chances[0];
 let winPosibilities = [
   [1, 2, 3],
@@ -19,6 +24,13 @@ let tiePossibility = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let userArray = [];
 let computerArray = [];
 
+export function UpdateNameAndChoice(){
+    playerName = localStorage.getItem("userName");
+    choice = localStorage.getItem("userChoice");
+    document.querySelector(".content").style.display = "none";
+    restart();
+    loadPlayerInfo();
+  }
 export function AboutCreators() {
   document
     .getElementById("about-button")
