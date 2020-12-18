@@ -1,9 +1,11 @@
 import $ from "jquery";
+import axios from 'axios';
 
 window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector(".content").style.display = "flex";
 });
 
+const uri = 'http://localhost:5000/game/add';
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let chances = ["User", "Computer"];
@@ -24,17 +26,17 @@ let tiePossibility = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let userArray = [];
 let computerArray = [];
 
-export function UpdateNameAndChoice(){
-    playerName = localStorage.getItem("userName");
-    choice = localStorage.getItem("userChoice");
-    document.querySelector(".content").style.display = "none";
-    random = Math.floor(Math.random() * chances.length)
-    firstChance = chances[random];
-    restart();
-    loadPlayerInfo();
-    // setTimeout(() => (document.getElementById("firstChance").style.opacity = "0"),8000);
-    loadFirstChanceInfo();
-  }
+export function UpdateNameAndChoice() {
+  playerName = localStorage.getItem("userName");
+  choice = localStorage.getItem("userChoice");
+  document.querySelector(".content").style.display = "none";
+  random = Math.floor(Math.random() * chances.length)
+  firstChance = chances[random];
+  restart();
+  loadPlayerInfo();
+  // setTimeout(() => (document.getElementById("firstChance").style.opacity = "0"),8000);
+  loadFirstChanceInfo();
+}
 export function AboutCreators() {
   document
     .getElementById("about-button")
@@ -86,31 +88,40 @@ function animateChar(node) {
 function addCellIntoUserArray(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
   userArray.push(selectedCellIndex + 1);
-  getGameSituation();
 }
 
 function getGameSituation() {
   let totalSelects = userArray.concat(computerArray);
   totalSelects.sort();
-  if (
-    winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))
-  ) {
+  if (winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))) {
+    postGameSitutaionToDB(1);
     displayGameSituationInLabel("WIN");
   } else if (
     winPosibilities.some((arr) =>
       arr.every((cell) => computerArray.includes(cell))
     )
   ) {
+    postGameSitutaionToDB(0);
     displayGameSituationInLabel("LOSE");
   } else if (JSON.stringify(tiePossibility) === JSON.stringify(totalSelects)) {
+    postGameSitutaionToDB(2);
     displayGameSituationInLabel("TIED");
   }
+}
+
+function postGameSitutaionToDB(situationInt) {
+  let gameObj = {
+    "userName": playerName,
+    "gameSituation": situationInt
+  }
+  axios.post(uri, gameObj)
+    .then(res => console.log(res.data));
 }
 
 function displayGameSituationInLabel(situation) {
   if (situation === "WIN" || situation === "LOSE") {
     document.getElementById("gameSituation").textContent = `YOU ${situation}`;
-  } else if (situation === "TIE") {
+  } else if (situation === "TIED") {
     document.getElementById("gameSituation").textContent = `GAME ${situation}`;
   }
 }
