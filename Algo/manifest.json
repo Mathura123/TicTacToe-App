@@ -1,0 +1,17 @@
+{
+   "app": {
+      "background": {
+         "scripts": [ "background.js" ]
+      }
+   },
+   "description": "Tic Tac Toe game that is impossible to win",
+   "icons": {
+      "128": "x128.png",
+      "16": "x.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCj+EhBTwc+MRnxpLKAXWipT0oavTtQhrqq75rt3Doj3rVdIq5NG2sIq+oU2mteqoZ+plRJP61sfXSXo4fdepvuQOVVrgUCuG2gYkKVyx0lNKWkK3BI4V7xMje8/kTlJgKM305g4yFpiY5ZjEBDUyPqDWT/S+9jgeupOpoYA5FStQIDAQAB",
+   "manifest_version": 2,
+   "name": "Impossible Tic Tac Toe",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.2"
+}
