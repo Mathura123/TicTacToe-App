@@ -10,6 +10,7 @@ let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice=choice==="X"?"O":"X";//new
 let board= ['_', '_', '_', '_', '_', '_', '_', '_', '_'];//new
+//let board= [0,1,2,3,4,5,6,7,8];
 let turn='uesr';
 let chances = ["User", "Computer"];
 let random = Math.floor(Math.random() * chances.length);
@@ -28,6 +29,19 @@ let winPosibilities = [
 let tiePossibility = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let userArray = [];
 let computerArray = [];
+let check=0;
+
+/*if(firstChance==="Computer" && check===0)
+{
+	check=1;
+	let selectedCellIndex = Math.floor(Math.random() * 9);
+	computerArray.push((selectedCellIndex)+1);
+  	board[selectedCellIndex]=computerChoice;
+  	let n='block_'+selectedCellIndex;
+  	animateChar(n, computerChoice);
+  	turn='User';
+  	//getGameSituation();
+}*/
 
 export function UpdateNameAndChoice() {
   playerName = localStorage.getItem("userName");
@@ -92,7 +106,7 @@ function addCellIntoUserArray(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
   userArray.push(selectedCellIndex + 1);
   board[selectedCellIndex]=choice;//new
-  turn='computer';
+  turn='Computer';
   //getGameSituation();
 }
 
@@ -113,7 +127,7 @@ function getGameSituation() {
     postGameSitutaionToDB(2);
     displayGameSituationInLabel("TIED");
   }
-  else if(turn==='computer'){
+  else if(turn==='Computer'){
 	addCellIntoComputerArray();
   }
 }
@@ -140,6 +154,8 @@ export function restart() {
   $(".circle-shown").removeClass("circle-shown");
   userArray = [];
   computerArray = [];
+  board= ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
+  check=0;
   document.getElementById("gameSituation").textContent = "";
 }
 
@@ -158,9 +174,22 @@ export function loadPlayerInfo() {
 }
 
 export function loadFirstChanceInfo() {
-  document.querySelector(
+	if(firstChance==="Computer" && check===0)
+	{
+		
+		let selectedCellIndex = Math.floor(Math.random() * 9);
+		computerArray.push((selectedCellIndex)+1);
+		board[selectedCellIndex]=computerChoice;
+		let n='block_'+selectedCellIndex;
+		animateChar(n, computerChoice);
+		turn='User';
+		firstChance="Computer";
+		//restart();
+		check=1;
+	}
+  	document.querySelector(
     "#firstChance"
-  ).innerHTML = `${firstChance} got first chance`;
+  	).innerHTML = `${firstChance} got first chance`;
 }
 
 export function loadCurrentChanceInfo() {
@@ -179,15 +208,17 @@ export function loadCurrentChanceInfo() {
 //Computer's Move
 function addCellIntoComputerArray() {
   let selectedCellIndex = findBestMove();
-  computerArray.push(changeIndex(selectedCellIndex)+1);
+  //let selectedCellIndex=minimax(board, computerChoice);
+  //computerArray.push(changeIndex(selectedCellIndex)+1);
+  computerArray.push((selectedCellIndex)+1);
   board[selectedCellIndex]=computerChoice;
   let n='block_'+selectedCellIndex;
   animateChar(n, computerChoice);
-  turn='user';
+  turn='User';
   getGameSituation();
 }
 
-function changeIndex(selectedCellIndex)
+/*function changeIndex(selectedCellIndex)
 {
 	switch(selectedCellIndex)
 	{
@@ -212,7 +243,7 @@ function changeIndex(selectedCellIndex)
 		default:
 			return 0;																																														
 	}
-}
+}*/
 
 let player = computerChoice, opponent = choice; 
 let computerMove=0;
@@ -222,16 +253,13 @@ let computerMove=0;
 // there are no moves left to play. 
 function isMovesLeft(board) 
 { 
-  let iterator=-1;
-	for (let i = 0; i < 3; i++) 
-		for (let j = 0; j < 3; j++) 
-			if (board[iterator++] === '_')
-				return true; 
-	return false; 
+	for(let i=0;i<9;i++)
+		if(board[i] === "_")
+		return true; 
+	return false;
 } 
 
-// This is the evaluation function as discussed 
-// in the previous article ( http://goo.gl/sJgv68 ) 
+// This is the evaluation function
 function evaluate(b) 
 { 
 	// Checking for Rows for X or O victory. 
@@ -328,7 +356,7 @@ function minimax(board,depth,isMax)
 				} 
 			} 
 		} 
-		return best; 
+		return best+depth; 
 	} 
 
 	// If this minimizer's move 
@@ -366,9 +394,6 @@ function minimax(board,depth,isMax)
 function findBestMove() 
 { 
 	let bestVal = -1000; 
-	//bestMove = new Move(); 
-	//bestMove.row = -1; 
-	//bestMove.col = -1; 
 
 	// Traverse all cells, evaluate minimax function 
 	// for all empty cells. And return the cell 
@@ -395,16 +420,12 @@ function findBestMove()
 				// best/ 
 				if (moveVal > bestVal) 
 				{ 
-					//bestMove.row = i; 
-					//bestMove.col = j; 
           			computerMove=3*i+j;
           			bestVal = moveVal; 
 				} 
 			} 
 		} 
-	} 
-
-	//System.out.printf("The value of the best Move " + "is : %d\n\n", bestVal); 
+	}
 
 	return computerMove; 
 } 
