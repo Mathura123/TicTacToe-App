@@ -24,7 +24,7 @@ class ChanceInfo extends React.Component {
   }
 }
 function GameSituation(props) {
-  return <label id="gameSituation"></label>;
+  return <div className="gameSituation" id="gameSituation"></div>;
 }
 function CenterBody(props) {
   return (

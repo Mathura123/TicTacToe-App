@@ -1,6 +1,6 @@
 import { AboutCreators } from "../game.js";
 import TabLogo from "../../assets/TabLogo.png";
-import "../../css/pickChoice.css";
+import "../../css/index.css";
 function Header(props) {
   return (
     <header class="header" id="header">
