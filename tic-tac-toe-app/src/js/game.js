@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const uri = 'http://localhost:5000/game/add';
+const uriUserInput = 'http://localhost:5000/game/userInput/add';
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice=choice==="X"?"O":"X";
@@ -91,6 +92,11 @@ function animateChar(node, print) {
 
 function addCellIntoUserArray(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
+  let indexObj ={
+    "userInput" : selectedCellIndex
+  }
+  axios.post(uriUserInput, indexObj)
+    .then(res => console.log(res.data));
   userArray.push(selectedCellIndex + 1);
   board[selectedCellIndex]=1;
   turn='Computer';
@@ -114,7 +120,6 @@ function getGameSituation() {
     displayGameSituationInLabel("TIED");
   }
   else if(turn==='Computer'){
-	response();
   }
 }
 
@@ -167,7 +172,6 @@ export function loadFirstChanceInfo() {
 		  ).innerHTML = `${firstChance} got first chance`;
 	if(firstChance==="Computer")
 	{
-		response();
 	}
   	
 }
