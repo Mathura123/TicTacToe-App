@@ -131,6 +131,7 @@ function getGameSituation() {
   } else if (turn === "Computer") {
     axios.get(uriComputerOutput)
     .then(res=> {console.log(res.data);animateComputerOutput(res.data);});
+    turn="User";
   }
 }
 
@@ -138,6 +139,7 @@ function animateComputerOutput(computerMove)
 {
   let node="block_"+computerMove;
   animateChar(node, computerChoice);
+  board[computerMove]=2;
 }
 
 function postGameSitutaionToDB(situationInt) {
@@ -162,6 +164,7 @@ export function restart() {
   $(".circle-shown").removeClass("circle-shown");
   userArray = [];
   computerArray = [];
+  board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   check = 0;
   document.getElementById("gameSituation").textContent = "";
 }

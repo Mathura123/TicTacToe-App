@@ -1,9 +1,9 @@
-let { userInput } = require('../routes/gameRoutes');
-let computerOutput; 
+const {userInpt} = require('../routes/gameRoutes.js');
+let computerOutput = userInpt; 
 //let userArray = [];
 //let computerArray = [];
 let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-board=userInput.split(",");
+//let board=userInpt;
 var pos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -16,7 +16,6 @@ var pos = [
 ];
 
 //board[userInput]=1;
-response();
 
 function response() {
     var p;
@@ -24,6 +23,7 @@ function response() {
         board[position] = 2;
         //let n = 'block_' + (position);
         computerOutput=position;
+        console.log(board);
         //turn = "User";
         //computerArray.push(position + 1);
         return;
@@ -159,4 +159,6 @@ function response() {
         }
     }
 }
+response();
+// computerOutput = mymodule.userInput
 module.exports.computerOutput = computerOutput;
