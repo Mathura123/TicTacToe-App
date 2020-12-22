@@ -1,19 +1,21 @@
 import $ from "jquery";
-import axios from 'axios';
+import axios from "axios";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector(".content").style.display = "flex";
 });
-
-const uri = 'http://localhost:5000/game/add';
+function GameResult() {
+  document.querySelector(".gameSituation").style.display = "block";
+}
+const uri = "http://localhost:5000/game/add";
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
-let computerChoice=choice==="X"?"O":"X";//new
+let computerChoice = choice === "X" ? "O" : "X"; //new
 //let board= ['_', '_', '_', '_', '_', '_', '_', '_', '_'];//new
 //let board= [0,1,2,3,4,5,6,7,8];
-let board = [0,0,0,0,0,0,0,0,0];
+let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 //var g=board;//new
-let turn='uesr';
+let turn = "uesr";
 let chances = ["User", "Computer"];
 let random = Math.floor(Math.random() * chances.length);
 let firstChance = chances[random];
@@ -31,7 +33,7 @@ let winPosibilities = [
 let tiePossibility = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let userArray = [];
 let computerArray = [];
-let check=0;
+let check = 0;
 
 /*if(firstChance==="Computer" && check===0)
 {
@@ -48,9 +50,9 @@ let check=0;
 export function UpdateNameAndChoice() {
   playerName = localStorage.getItem("userName");
   choice = localStorage.getItem("userChoice");
-  computerChoice=choice==="X"?"O":"X";
+  computerChoice = choice === "X" ? "O" : "X";
   document.querySelector(".content").style.display = "none";
-  random = Math.floor(Math.random() * chances.length)
+  random = Math.floor(Math.random() * chances.length);
   firstChance = chances[random];
   restart();
   loadPlayerInfo();
@@ -66,6 +68,7 @@ export function AboutCreators() {
 }
 export function PickChoice() {
   document.getElementById("new-user").addEventListener("click", function () {
+    document.querySelector(".gameSituation").style.display = "none";
     document.querySelector(".content").style.display = "flex";
   });
 }
@@ -109,16 +112,19 @@ function addCellIntoUserArray(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
   userArray.push(selectedCellIndex + 1);
   //board[selectedCellIndex]=choice;//new
-  board[selectedCellIndex]=1;//new
-  turn='Computer';
+  board[selectedCellIndex] = 1; //new
+  turn = "Computer";
   //getGameSituation();
 }
 
 function getGameSituation() {
   let totalSelects = userArray.concat(computerArray);
   totalSelects.sort();
-  if (winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))) {
+  if (
+    winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))
+  ) {
     postGameSitutaionToDB(1);
+    GameResult();
     displayGameSituationInLabel("WIN");
   } else if (
     winPosibilities.some((arr) =>
@@ -126,24 +132,24 @@ function getGameSituation() {
     )
   ) {
     postGameSitutaionToDB(0);
+    GameResult();
     displayGameSituationInLabel("LOSE");
   } else if (JSON.stringify(tiePossibility) === JSON.stringify(totalSelects)) {
     postGameSitutaionToDB(2);
+    GameResult();
     displayGameSituationInLabel("TIED");
-  }
-  else if(turn==='Computer'){
-	//addCellIntoComputerArray();
-	response();
+  } else if (turn === "Computer") {
+    //addCellIntoComputerArray();
+    response();
   }
 }
 
 function postGameSitutaionToDB(situationInt) {
   let gameObj = {
-    "userName": playerName,
-    "gameSituation": situationInt
-  }
-  axios.post(uri, gameObj)
-    .then(res => console.log(res.data));
+    userName: playerName,
+    gameSituation: situationInt,
+  };
+  axios.post(uri, gameObj).then((res) => console.log(res.data));
 }
 
 function displayGameSituationInLabel(situation) {
@@ -155,13 +161,14 @@ function displayGameSituationInLabel(situation) {
 }
 
 export function restart() {
+  document.querySelector(".gameSituation").style.display = "none";
   $(".cross-shown").removeClass("cross-shown");
   $(".circle-shown").removeClass("circle-shown");
   userArray = [];
   computerArray = [];
   //board= ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
-  board = [0,0,0,0,0,0,0,0,0];
-  check=0;
+  board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  check = 0;
   document.getElementById("gameSituation").textContent = "";
 }
 
@@ -171,7 +178,7 @@ export function loadPlayerInfo() {
   else if (choice === "O") compChoice = "X";
   else compChoice = " ";
 
-	computerChoice= compChoice;
+  computerChoice = compChoice;
 
   let innerHtml = `
   <div class="player-name"> PLAYER NAME: ${playerName}</div>
@@ -182,14 +189,13 @@ export function loadPlayerInfo() {
 }
 
 export function loadFirstChanceInfo() {
-	document.querySelector(
-		"#firstChance"
-		  ).innerHTML = `${firstChance} got first chance`;
-	if(firstChance==="Computer")
-	{
-		response();
-	}
-	/*if(firstChance==="Computer" && check===0)
+  document.querySelector(
+    "#firstChance"
+  ).innerHTML = `${firstChance} got first chance`;
+  if (firstChance === "Computer") {
+    response();
+  }
+  /*if(firstChance==="Computer" && check===0)
 	{
 		restart();
 		let selectedCellIndex = Math.floor(Math.random() * 9);
@@ -202,7 +208,6 @@ export function loadFirstChanceInfo() {
 		//restart();
 		check=1;
 	}*/
-  	
 }
 
 export function loadCurrentChanceInfo() {
@@ -211,10 +216,6 @@ export function loadCurrentChanceInfo() {
     "#currentChance"
   ).innerHTML = `It's ${currentChance}'s turn`;
 }
-
-
-
-
 
 /*
 
@@ -443,209 +444,203 @@ function findBestMove()
 	return computerMove; 
 } */
 
-
-
-
 //New Algorithm
 
-
 //winning positions
-var pos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[6,4,2]];
+var pos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [6, 4, 2],
+];
 //score
 var countLost = 0;
 var countTies = 0;
 
 //computer intelligence figures best response
-function response(){
-    var p;
+function response() {
+  var p;
 
-    function claim(o){
-        board[o] = 2;
-		//document.getElementById("t"+o).className+="o";
-		let n='block_'+(o);
-		  animateChar(n, computerChoice);
-		  turn = "User";
-		  computerArray.push(o+1);
-		  getGameSituation();
+  function claim(o) {
+    board[o] = 2;
+    //document.getElementById("t"+o).className+="o";
+    let n = "block_" + o;
+    animateChar(n, computerChoice);
+    turn = "User";
+    computerArray.push(o + 1);
+    getGameSituation();
+    return;
+  }
+
+  for (var w = 0; w < pos.length; w++) {
+    p = pos[w];
+    var countX = 0;
+    var countO = 0;
+    var blankO = -1;
+    for (var c = 0; c < 3; c++) {
+      if (board[p[c]] == 1) countX++;
+      if (board[p[c]] == 2) countO++;
+      if (board[p[c]] == 0) blankO = c;
+    }
+
+    //1 ensure win when pc has 2 in a row and blank
+    if (countO == 2 && blankO > -1) {
+      claim(p[blankO]);
+      return;
+    }
+  }
+
+  for (var w = 0; w < pos.length; w++) {
+    p = pos[w];
+    var countX = 0;
+    var countO = 0;
+    var blankO = -1;
+    for (var c = 0; c < 3; c++) {
+      if (board[p[c]] == 1) countX++;
+      if (board[p[c]] == 2) countO++;
+      if (board[p[c]] == 0) blankO = c;
+    }
+
+    //2 avert sure loss when user has 2 in a row and blank
+    if (countX == 2 && blankO > -1) {
+      claim(p[blankO]);
+      return;
+    }
+  }
+
+  //3 claim optimal middle if open
+  if (board[4] == 0) {
+    claim(4);
+    return;
+  }
+
+  //avert diagonal xox => claim edge, not corner
+  if (board.toString() == [0, 0, 1, 0, 2, 0, 1, 0, 0].toString()) {
+    claim(7);
+    return;
+  }
+  if (board.toString() == [1, 0, 0, 0, 2, 0, 0, 0, 1].toString()) {
+    claim(5);
+    return;
+  }
+  //avoid corner trap
+  if (board.toString() == [1, 0, 0, 0, 2, 0, 0, 1, 0].toString()) {
+    claim(6);
+    return;
+  }
+
+  for (var w = 0; w < pos.length; w++) {
+    p = pos[w];
+    var countX = 0;
+    var countO = 0;
+    var blankO = -1;
+    for (var c = 0; c < 3; c++) {
+      if (board[p[c]] == 1) countX++;
+      if (board[p[c]] == 2) countO++;
+      if (board[p[c]] == 0) blankO = c;
+    }
+
+    //4 avert user 2 in row when 1 in row and 2 blank by placing O in a corner
+    if (countX == 1 && countO == 0 && blankO > -1) {
+      if (p[blankO] == 0 && board[0] == 0) {
+        claim(0);
         return;
-    }
-
-    for (var w=0; w<pos.length;w++){
-        p = pos[w];
-        var countX =0;
-        var countO =0;
-        var blankO = -1;
-        for (var c = 0; c < 3; c++){
-            if (board[p[c]] == 1) countX++;
-            if (board[p[c]] == 2) countO++;
-            if (board[p[c]] == 0) blankO = c;
-        }
-
-        //1 ensure win when pc has 2 in a row and blank
-        if (countO==2 && blankO > -1){
-            claim(p[blankO]);
-            return;
-        }
-
-    }
-
-    for (var w=0; w<pos.length;w++){
-        p = pos[w];
-        var countX =0;
-        var countO =0;
-        var blankO = -1;
-        for (var c = 0; c < 3; c++){
-            if (board[p[c]] == 1) countX++;
-            if (board[p[c]] == 2) countO++;
-            if (board[p[c]] == 0) blankO = c;
-        }
-
-        //2 avert sure loss when user has 2 in a row and blank
-         if (countX==2 && blankO > -1){
-             claim(p[blankO]);
-            return;
-        }
-
-    }
-
-    //3 claim optimal middle if open
-    if (board[4] == 0){
-        claim(4);
+      }
+      if (p[blankO] == 2 && board[2] == 0) {
+        claim(2);
         return;
-    }
-	
-	//avert diagonal xox => claim edge, not corner
-	if(board.toString()==[0, 0, 1, 0, 2, 0, 1, 0, 0].toString()){
-	    claim(7);
+      }
+      if (p[blankO] == 6 && board[6] == 0) {
+        claim(6);
         return;
-    }
-	if(board.toString()==[1, 0, 0, 0, 2, 0, 0, 0, 1].toString()){
-        claim(5);
+      }
+      if (p[blankO] == 8 && board[8] == 0) {
+        claim(8);
         return;
+      }
     }
-	//avoid corner trap
-	if(board.toString()==[1, 0, 0, 0, 2, 0, 0, 1, 0].toString()){
-	    claim(6);
-        return;
-    }
-	
-	
-	 for (var w=0; w<pos.length;w++){
-        p = pos[w];
-        var countX =0;
-        var countO =0;
-        var blankO = -1;
-        for (var c = 0; c < 3; c++){
-            if (board[p[c]] == 1) countX++;
-            if (board[p[c]] == 2) countO++;
-            if (board[p[c]] == 0) blankO = c;
-        }
+  }
 
-        //4 avert user 2 in row when 1 in row and 2 blank by placing O in a corner
-		if (countX==1 && countO==0 && blankO > -1){
-            
-			
-			if (p[blankO]==0 && board[0] == 0){
-				claim(0);
-				return;
-			}
-			if (p[blankO]==2 && board[2] == 0){
-				claim(2);
-				return;
-			}
-			if (p[blankO]==6 && board[6] == 0){
-				claim(6);
-				return;
-			}
-			if (p[blankO]==8 && board[8] == 0){
-				claim(8);
-				return;
-			}
-			
-        }
-    }
-	
-	
-	
-
-	
-    for (var w=0; w<pos.length;w++){
-        p = pos[w];
-        var countX =0;
-        var countO =0;
-        var blankO = -1;
-        for (var c = 0; c < 3; c++){
-            if (board[p[c]] == 1) countX++;
-            if (board[p[c]] == 2) countO++;
-            if (board[p[c]] == 0) blankO = c;
-        }
-
-        //5 support yourself to 2 in a row when 1 in row and 2 blank
-         if (countO==1 && countX==0 && blankO > -1){
-		 
-             claim(p[blankO]);
-            return;
-        }
-
+  for (var w = 0; w < pos.length; w++) {
+    p = pos[w];
+    var countX = 0;
+    var countO = 0;
+    var blankO = -1;
+    for (var c = 0; c < 3; c++) {
+      if (board[p[c]] == 1) countX++;
+      if (board[p[c]] == 2) countO++;
+      if (board[p[c]] == 0) blankO = c;
     }
 
+    //5 support yourself to 2 in a row when 1 in row and 2 blank
+    if (countO == 1 && countX == 0 && blankO > -1) {
+      claim(p[blankO]);
+      return;
+    }
+  }
 
-    for (var w=0; w<pos.length;w++){
-        p = pos[w];
-        var countX =0;
-        var countO =0;
-        var blankO = -1;
-        for (var c = 0; c < 3; c++){
-            if (board[p[c]] == 1) countX++;
-            if (board[p[c]] == 2) countO++;
-            if (board[p[c]] == 0) blankO = c;
-        }
-
-        //6 avert user 2 in row when 1 in row and blank
-     if (countX==1 && blankO > -1){
-            claim(p[blankO]);
-            return;
-        }
+  for (var w = 0; w < pos.length; w++) {
+    p = pos[w];
+    var countX = 0;
+    var countO = 0;
+    var blankO = -1;
+    for (var c = 0; c < 3; c++) {
+      if (board[p[c]] == 1) countX++;
+      if (board[p[c]] == 2) countO++;
+      if (board[p[c]] == 0) blankO = c;
     }
 
-    //all taken
-    countTies++;
-    resetBoard()
+    //6 avert user 2 in row when 1 in row and blank
+    if (countX == 1 && blankO > -1) {
+      claim(p[blankO]);
+      return;
+    }
+  }
 
+  //all taken
+  countTies++;
+  resetBoard();
 }
 
-function checkWin(){
-    var p;
-    for (var w=0; w<pos.length;w++){
-        p = pos[w];
+function checkWin() {
+  var p;
+  for (var w = 0; w < pos.length; w++) {
+    p = pos[w];
 
-        if ( board[p[0]] == board[p[1]] && board[p[0]] == board[p[2]] && board[p[0]] > 0){
+    if (
+      board[p[0]] == board[p[1]] &&
+      board[p[0]] == board[p[2]] &&
+      board[p[0]] > 0
+    ) {
+      for (var i = 0; i < 3; i++)
+        document.getElementById("t" + p[i]).className += " win";
 
-            for (var i=0;i<3;i++)
-                document.getElementById("t"+p[i]).className+=" win";
+      if (board[p[0]] == 1) {
+        alert("You actually won!");
+      }
+      if (board[p[0]] == 2) {
+        countLost++;
+      }
 
-            if (board[p[0]] == 1) {
-                alert("You actually won!")
-            }
-            if (board[p[0]] == 2) {
-                countLost++;
-            }
-
-            resetBoard();
-            return 1;
-        }
+      resetBoard();
+      return 1;
     }
+  }
 }
 
-function resetBoard(){
-	board = [0,0,0,0,0,0,0,0,0];
-	//document.getElementById('score-o').innerText = countLost;
-	//document.getElementById('score-g').innerText = countTies;
-	
-    //setTimeout(function(){
-    //    for (var i = 0; i < 9; i++)
-    //        document.getElementById("t" + i).className = "";
-	//	
-	//	g = [0,0,0,0,0,0,0,0,0];
-    //}, 500);
+function resetBoard() {
+  board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  //document.getElementById('score-o').innerText = countLost;
+  //document.getElementById('score-g').innerText = countTies;
+
+  //setTimeout(function(){
+  //    for (var i = 0; i < 9; i++)
+  //        document.getElementById("t" + i).className = "";
+  //
+  //	g = [0,0,0,0,0,0,0,0,0];
+  //}, 500);
 }

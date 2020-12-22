@@ -1,4 +1,4 @@
 function GameSituation(props) {
-  return <label className="gameSituation" id="gameSituation"></label>;
+  return <div className="gameSituation" id="gameSituation"></div>;
 }
 export default GameSituation;
