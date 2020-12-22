@@ -9,21 +9,24 @@
     rgba(45, 1, 62, 1) 100%
   );
   top: 0px;
+  left: 0px;
   height: 100%;
   width: 100%;
   padding: 0 0 0 0;
-  border-width: 5%;
-  border-radius: 1%;
+  border-width: 0.2em;
+  border-radius: 1em;
   border-color: #000000;
   border-style: double;
   text-align: center;
   align-items: center;
 }
 
+body {
+  background: #38033a;
+}
+
 .header-content {
   font-family: "Comic Sans MS";
-  height: 20%;
-  width: 100%;
 }
 
 .glow-header {
@@ -50,19 +53,18 @@
 .options {
   display: flex;
   flex-direction: row;
-  padding: 1% 3%;
-  justify-content: center;
-  height: 17%;
-  width: 70%;
+  /*margin: 2% 0% 2% 0%;*/
+  padding: 0em;
 }
 
 .choice-button {
   background-color: #dbf304;
-  border-radius: 40%;
-  border-width: 10%;
+  border-radius: 1em;
+  border-width: 3px;
   color: white;
-  padding: 3% 3%;
-  text-shadow: 10% 10% 30% #000000;
+  padding: 30px 70px;
+  text-shadow: 2px 2px 8px #000000;
+  margin: 2% 0% 10% 0%;
   text-align: center;
   font-size: 300%;
 }
