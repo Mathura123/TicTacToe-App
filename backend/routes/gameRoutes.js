@@ -1,3 +1,4 @@
+let { computerOutput } = require('../Algorithm/computerAlgo');
 const router = require("express").Router();
 let Game = require("../models/game.model");
 let variableObj={};
@@ -29,4 +30,9 @@ router.route("/userInput/add").post((req, res) => {
   module.exports.userInput = variableObj["userInput"];
   console.log(variableObj["userInput"])
 });
+
+router.route("/computerOutput/").get((req, res) => {
+  res.json(computerOutput);
+});
+
 module.exports = router;

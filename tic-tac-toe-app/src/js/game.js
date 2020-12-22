@@ -10,11 +10,12 @@ function GameResult() {
 }
 const uri = "http://localhost:5000/game/add";
 const uriUserInput = 'http://localhost:5000/game/userInput/add';
+const uriComputerOutput = 'http://localhost:5000/game/computerOutput/';
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X";
 let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-let turn = "uesr";
+let turn = "User";
 let chances = ["User", "Computer"];
 let random = Math.floor(Math.random() * chances.length);
 let firstChance = chances[random];
@@ -128,7 +129,8 @@ function getGameSituation() {
     GameResult();
     displayGameSituationInLabel("TIED");
   } else if (turn === "Computer") {
-    /*response();*/
+    axios.get(uriComputerOutput)
+    .then(res=> console.log(res.data));
   }
 }
 
