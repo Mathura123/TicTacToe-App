@@ -1,8 +1,9 @@
 let { userInput } = require('../routes/gameRoutes');
 let computerOutput; 
 //let userArray = [];
-let computerArray = [];
+//let computerArray = [];
 let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+board=userInput.split(",");
 var pos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -14,14 +15,17 @@ var pos = [
     [6, 4, 2]
 ];
 
+//board[userInput]=1;
+response();
+
 function response() {
     var p;
     function claim(position) {
         board[position] = 2;
         //let n = 'block_' + (position);
-        // turn = "User";
         computerOutput=position;
-        computerArray.push(position + 1);
+        //turn = "User";
+        //computerArray.push(position + 1);
         return;
     }
     for (var w = 0; w < pos.length; w++) {
@@ -155,5 +159,4 @@ function response() {
         }
     }
 }
-response();
 module.exports.computerOutput = computerOutput;

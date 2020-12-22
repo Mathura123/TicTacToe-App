@@ -27,8 +27,9 @@ router.route("/add").post((req, res) => {
 router.route("/userInput/add").post((req, res) => {
   variableObj["userInput"] = req.body.userInput; 
   res.json(`User input added at + ${variableObj["userInput"]}`);
-  module.exports.userInput = variableObj["userInput"];
+  module.exports.userInput = variableObj["userInput"]();
   console.log(variableObj["userInput"])
+  //console.log(typeof(variableObj["userInput"]))
 });
 
 router.route("/computerOutput/").get((req, res) => {
