@@ -1,17 +1,20 @@
 import $ from "jquery";
-import axios from 'axios';
+import axios from "axios";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector(".content").style.display = "flex";
 });
 
-const uri = 'http://localhost:5000/game/add';
+function GameResult() {
+  document.querySelector(".gameSituation").style.display = "block";
+}
+const uri = "http://localhost:5000/game/add";
 const uriUserInput = 'http://localhost:5000/game/userInput/add';
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
-let computerChoice=choice==="X"?"O":"X";
-let board = [0,0,0,0,0,0,0,0,0];
-let turn='uesr';
+let computerChoice = choice === "X" ? "O" : "X";
+let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+let turn = "uesr";
 let chances = ["User", "Computer"];
 let random = Math.floor(Math.random() * chances.length);
 let firstChance = chances[random];
@@ -29,14 +32,14 @@ let winPosibilities = [
 let tiePossibility = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let userArray = [];
 let computerArray = [];
-let check=0;
+let check = 0;
 
 export function UpdateNameAndChoice() {
   playerName = localStorage.getItem("userName");
   choice = localStorage.getItem("userChoice");
-  computerChoice=choice==="X"?"O":"X";
+  computerChoice = choice === "X" ? "O" : "X";
   document.querySelector(".content").style.display = "none";
-  random = Math.floor(Math.random() * chances.length)
+  random = Math.floor(Math.random() * chances.length);
   firstChance = chances[random];
   restart();
   loadPlayerInfo();
@@ -51,6 +54,7 @@ export function AboutCreators() {
 }
 export function PickChoice() {
   document.getElementById("new-user").addEventListener("click", function () {
+    document.querySelector(".gameSituation").style.display = "none";
     document.querySelector(".content").style.display = "flex";
   });
 }
@@ -98,15 +102,18 @@ function addCellIntoUserArray(node) {
   axios.post(uriUserInput, indexObj)
     .then(res => console.log(res.data));
   userArray.push(selectedCellIndex + 1);
-  board[selectedCellIndex]=1;
-  turn='Computer';
+  board[selectedCellIndex] = 1;
+  turn = "Computer";
 }
 
 function getGameSituation() {
   let totalSelects = userArray.concat(computerArray);
   totalSelects.sort();
-  if (winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))) {
+  if (
+    winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))
+  ) {
     postGameSitutaionToDB(1);
+    GameResult();
     displayGameSituationInLabel("WIN");
   } else if (
     winPosibilities.some((arr) =>
@@ -114,22 +121,23 @@ function getGameSituation() {
     )
   ) {
     postGameSitutaionToDB(0);
+    GameResult();
     displayGameSituationInLabel("LOSE");
   } else if (JSON.stringify(tiePossibility) === JSON.stringify(totalSelects)) {
     postGameSitutaionToDB(2);
+    GameResult();
     displayGameSituationInLabel("TIED");
-  }
-  else if(turn==='Computer'){
+  } else if (turn === "Computer") {
+    /*response();*/
   }
 }
 
 function postGameSitutaionToDB(situationInt) {
   let gameObj = {
-    "userName": playerName,
-    "gameSituation": situationInt
-  }
-  axios.post(uri, gameObj)
-    .then(res => console.log(res.data));
+    userName: playerName,
+    gameSituation: situationInt,
+  };
+  axios.post(uri, gameObj).then((res) => console.log(res.data));
 }
 
 function displayGameSituationInLabel(situation) {
@@ -141,12 +149,13 @@ function displayGameSituationInLabel(situation) {
 }
 
 export function restart() {
+  document.querySelector(".gameSituation").style.display = "none";
   $(".cross-shown").removeClass("cross-shown");
   $(".circle-shown").removeClass("circle-shown");
   userArray = [];
   computerArray = [];
-  board = [0,0,0,0,0,0,0,0,0];
-  check=0;
+  board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  check = 0;
   document.getElementById("gameSituation").textContent = "";
 }
 
@@ -156,7 +165,7 @@ export function loadPlayerInfo() {
   else if (choice === "O") compChoice = "X";
   else compChoice = " ";
 
-	computerChoice= compChoice;
+  computerChoice = compChoice;
 
   let innerHtml = `
   <div class="player-name"> PLAYER NAME: ${playerName}</div>
@@ -167,13 +176,12 @@ export function loadPlayerInfo() {
 }
 
 export function loadFirstChanceInfo() {
-	document.querySelector(
-		"#firstChance"
-		  ).innerHTML = `${firstChance} got first chance`;
-	if(firstChance==="Computer")
-	{
-	}
-  	
+  document.querySelector(
+    "#firstChance"
+  ).innerHTML = `${firstChance} got first chance`;
+  if (firstChance === "Computer") {
+    /*response();*/
+  }
 }
 
 export function loadCurrentChanceInfo() {

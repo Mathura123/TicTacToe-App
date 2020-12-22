@@ -4,6 +4,7 @@ import Container from "./js/components/container";
 import Footer from "./js/components/footer";
 import Popups from "./js/components/popups";
 import PickChoice from "./js/components/SignUp";
+import GameSituation from "./js/components/gameSituation";
 import "./css/index.css";
 import "./css/pickChoice.css";
 import "./js/game.js";
@@ -15,6 +16,7 @@ function App() {
       <Header />
       <Play />
       <Container />
+      <GameSituation />
       <Footer />
       <Popups />
       <PickChoice />
