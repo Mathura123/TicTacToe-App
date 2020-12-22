@@ -13,6 +13,7 @@ const uriUserInput = 'http://localhost:5000/game/userInput/add';
 const uriComputerOutput = 'http://localhost:5000/game/computerOutput/';
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
+let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let computerChoice = choice === "X" ? "O" : "X";
 let turn = "User";
 let chances = ["User", "Computer"];
@@ -96,8 +97,9 @@ function animateChar(node, print) {
 
 function addCellIntoUserArray(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
+  board[selectedCellIndex]=1;
   let indexObj ={
-    "userInput" : selectedCellIndex
+    "userInput" : board
   }
   axios.post(uriUserInput, indexObj)
     .then(res => console.log(res.data));
@@ -128,8 +130,14 @@ function getGameSituation() {
     displayGameSituationInLabel("TIED");
   } else if (turn === "Computer") {
     axios.get(uriComputerOutput)
-    .then(res=> console.log(res.data));
+    .then(res=> {console.log(res.data);animateComputerOutput(res.data);});
   }
+}
+
+function animateComputerOutput(computerMove)
+{
+  let node="block_"+computerMove;
+  animateChar(node, computerChoice);
 }
 
 function postGameSitutaionToDB(situationInt) {
