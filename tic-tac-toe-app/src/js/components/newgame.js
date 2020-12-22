@@ -4,7 +4,7 @@ import "../game.js";
 
 function NewGame(props) {
   return (
-    <div>
+    <div className="new-game-buttons">
       <button className="restart" onClick={restart}>
         <b>RESTART</b>
       </button>

@@ -33,6 +33,7 @@ let check=0;
 export function UpdateNameAndChoice() {
   playerName = localStorage.getItem("userName");
   choice = localStorage.getItem("userChoice");
+  computerChoice=choice==="X"?"O":"X";
   document.querySelector(".content").style.display = "none";
   random = Math.floor(Math.random() * chances.length)
   firstChance = chances[random];

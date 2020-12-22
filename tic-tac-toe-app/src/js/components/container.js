@@ -9,13 +9,7 @@ function HelpInfo(props) {
   return (
     <div className="help-info">
       <div className="help" id="help">
-        <img
-          src={helpboard}
-          alt=""
-          height="250px"
-          width="250px"
-          onClick={Help}
-        />
+        <img src={helpboard} alt="" height="50%" width="50%" onClick={Help} />
       </div>
     </div>
   );
