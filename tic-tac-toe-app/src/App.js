@@ -13,13 +13,13 @@ import "./js/game.js";
 function App() {
   return (
     <>
+      <PickChoice />
       <Header />
       <Play />
       <Container />
       <GameSituation />
       <Footer />
       <Popups />
-      <PickChoice />
     </>
   );
 }
