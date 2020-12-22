@@ -19,7 +19,7 @@ connection.once("open", () => {
 
 const gameRouter = require("./routes/gameRoutes");
 
-app.use("/game", gameRouter);
+app.use("/game", gameRouter.router);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
