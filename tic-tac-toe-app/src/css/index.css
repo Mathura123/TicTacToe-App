@@ -241,6 +241,7 @@ body {
   text-align: center;
   width: 100%;
   margin-top: 2%;
+  position: fixed;
 }
 
 svg {
@@ -353,27 +354,29 @@ svg {
   top: 0;
   display: none;
   justify-content: left;
-  align-items: center;
-  padding: 30px;
+  align-items: top;
+  padding: 3%;
 }
 
 .help-contents {
-  height: 500px;
-  width: 500px;
+  height: 70%;
+  width: 30%;
   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.4)),
     url("../assets/helpbackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   text-align: left;
   position: relative;
-  border-radius: 4px;
+  border-radius: 4%;
+  word-wrap: break-word;
+  margin: 5% 0%;
 }
 
 .help-close {
   position: absolute;
   top: 0;
-  right: 10px;
-  font-size: 42px;
+  right: 5%;
+  font-size: 200%;
   color: #333;
   transform: rotate(45deg);
   cursor: pointer;
@@ -382,5 +385,31 @@ svg {
 .rules {
   padding: 10%;
   color: #e6ff05e0;
-  font-size: 25px;
+  font-size: 150%;
+  height: 80%;
+  width: 80%;
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    width: 800px;
+  }
+  .modal-help {
+    height: 120%;
+  }
+  .help-contents {
+    height: 300px;
+    width: 300px;
+  }
+  .rules {
+    font-size: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .modal-creators {
+    align-items: top;
+  }
+  .creators-contents {
+    top: 0px;
+  }
 }
