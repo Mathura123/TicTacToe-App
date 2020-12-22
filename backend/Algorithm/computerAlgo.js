@@ -2,6 +2,7 @@ let { userInput } = require('../routes/gameRoutes');
 let computerOutput= 3; 
 let userArray = [];
 let computerArray = [];
+let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var pos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -12,8 +13,7 @@ var pos = [
     [0, 4, 8],
     [6, 4, 2]
 ];
-// console.log(`I am in algo.js user input is ${userInput}`);
-//computer intelligence figures best response
+
 // export function response() {
 //     var p;
 //     function claim(position) {

@@ -14,7 +14,6 @@ const uriComputerOutput = 'http://localhost:5000/game/computerOutput/';
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X";
-let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let turn = "User";
 let chances = ["User", "Computer"];
 let random = Math.floor(Math.random() * chances.length);
@@ -103,7 +102,6 @@ function addCellIntoUserArray(node) {
   axios.post(uriUserInput, indexObj)
     .then(res => console.log(res.data));
   userArray.push(selectedCellIndex + 1);
-  board[selectedCellIndex] = 1;
   turn = "Computer";
 }
 
@@ -156,7 +154,6 @@ export function restart() {
   $(".circle-shown").removeClass("circle-shown");
   userArray = [];
   computerArray = [];
-  board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   check = 0;
   document.getElementById("gameSituation").textContent = "";
 }
