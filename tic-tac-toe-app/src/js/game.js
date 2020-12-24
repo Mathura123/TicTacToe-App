@@ -158,13 +158,13 @@ function displayGameSituationInLabel(situation) {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <span><img src=${gameOver} alt="" height="50%" width="50%" /></span>
+    <img src=${gameOver} alt="" height="50%" width="50%" />
     `;
   } else if (situation === "TIED") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `GAME ${situation}       
-    <span><img src=${gameOver} alt="" height="60%" width="60%" /></span>
+    <img src=${gameOver} alt="" height="60%" width="60%" />
     `;
   }
 }
