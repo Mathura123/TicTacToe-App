@@ -129,7 +129,7 @@ function getGameSituation() {
   let totalSelects = userArray.concat(computerArray);
   totalSelects.sort();
   if (winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))) {
-    postGameSitutaionToDB(1);
+    postGameSitutaionToDB(2);
     GameResult();
     displayGameSituationInLabel("WIN");
     gameEnd=true;
@@ -139,7 +139,7 @@ function getGameSituation() {
     displayGameSituationInLabel("LOSE");
     gameEnd=true;
   } else if (JSON.stringify(tiePossibility) === JSON.stringify(totalSelects)) {
-    postGameSitutaionToDB(2);
+    postGameSitutaionToDB(1);
     GameResult();
     displayGameSituationInLabel("TIED");
     gameEnd=true;
