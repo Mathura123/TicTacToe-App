@@ -184,14 +184,6 @@ function GameResult() {
   document.querySelector(".gameSituation").style.display = "block";
 }
 
-function workOnComputerChoice()
-{
-  let node="block_"+computerChoice;
-  animateChar(node, computerChoice);
-  computerArray.push(computerChoice+1);
-  board[computerChoice]=2;
-}
-
 export function restart() {
   document.querySelector(".gameSituation").style.display = "none";
   $(".cross-shown").removeClass("cross-shown");
