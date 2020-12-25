@@ -202,7 +202,7 @@ body {
   color: #ffd000;
   font-family: sans-serif;
   background-color: #000000;
-  opacity: 1;
+  opacity: 0.5;
   top: 0;
   transform: translate(-50% -50%);
   text-transform: uppercase;
