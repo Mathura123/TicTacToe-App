@@ -7,7 +7,6 @@ import PickChoice from "./js/components/SignUp";
 import "./css/index.css";
 import "./css/pickChoice.css";
 import "./js/game.js";
-//import "./js/pickChoice.js";
 
 function App() {
   return (

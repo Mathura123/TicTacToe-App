@@ -1,13 +1,7 @@
-// import { selectChoice } from "../pickChoice.js";
-// import { continueOnClick } from "../pickChoice.js";
 import "../../css/pickChoice.css";
-// import "../game.js";
 import React from "react";
 import {UpdateNameAndChoice} from "../game.js";
-//import "../pickChoice.js";
-// let choiceBool = false;
-// let choiceChar="";
-// let errorOutput = "";
+
 
 class PickChoice extends React.Component {
   constructor(props) {

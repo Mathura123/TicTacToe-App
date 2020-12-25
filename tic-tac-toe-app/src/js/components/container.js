@@ -24,7 +24,7 @@ class PlayerInfo extends React.Component {
 }
 function Container(props) {
   return (
-    <div class="container" id="container">
+    <div className="container" id="container">
       <HelpInfo />
       <CenterBody />
       <PlayerInfo />
