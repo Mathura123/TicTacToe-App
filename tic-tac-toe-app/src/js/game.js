@@ -100,11 +100,7 @@ function animateChar(node, print) {
 function addCellIntoUserArray(selectedCellIndex) {
   board[selectedCellIndex]=1;
   clickable[selectedCellIndex]=false;
-  let indexObj ={
-    "userInput" : board
-  }
-  axios.post(uriUserInput, indexObj)
-    .then(res => console.log(res.data));
+  postUserInput();
   userArray.push(selectedCellIndex + 1);
   currentChance = "AI";
 }
@@ -193,6 +189,7 @@ export function restart() {
   board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   clickable = [true,true,true,true,true,true,true,true,true];
   gameEnd=false;
+  currentChance=firstChance;
   loadFirstChanceInfo();
   document.getElementById("gameSituation").textContent = "";
 }
@@ -218,6 +215,16 @@ export function loadFirstChanceInfo() {
     "#firstChance"
   ).innerHTML = `${firstChance.toUpperCase()} Won the TOSS`;
   if (firstChance === "AI") {
+    postUserInput();
     getComputerMove();
   }
+}
+
+function postUserInput()
+{
+  let indexObj ={
+    "userInput" : board
+  }
+  axios.post(uriUserInput, indexObj)
+    .then(res => console.log(res.data));
 }
