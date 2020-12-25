@@ -192,11 +192,11 @@ body {
 }
 
 .gameSituation {
-  height: 40%;
-  width: 40%;
+  height: 30%;
+  width: 30%;
   display: none;
   position: absolute;
-  padding: 5% 10%;
+  padding: 0% 0% 10% 0%;
   justify-self: center;
   align-self: center;
   margin: 11%;
