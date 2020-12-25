@@ -43,7 +43,6 @@ export function UpdateNameAndChoice() {
   restart();
   loadPlayerInfo();
   loadFirstChanceInfo();
-  gameEnd=false;
 }
 export function AboutCreators() {
    document
@@ -195,6 +194,7 @@ export function restart() {
   userArray = [];
   computerArray = [];
   board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  clickable = [true,true,true,true,true,true,true,true,true];
   gameEnd=false;
   document.getElementById("gameSituation").textContent = "";
 }
