@@ -226,5 +226,5 @@ function postUserInput()
     "userInput" : board
   }
   axios.post(uriUserInput, indexObj)
-    .then(res => console.log(res.data));
+    .then(res => console.log("From postUserInput: "+res.data));
 }

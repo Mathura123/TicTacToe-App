@@ -52,14 +52,15 @@ module.exports={
   router : router
 }
 
+board =variableObj["userInput"]
+function claim(position) {
+  board[position] = 2;
+  computerOutput=position;
+  return;
+}
+
 function response() {
-    board =variableObj["userInput"]
     var p;
-    function claim(position) {
-        board[position] = 2;
-        computerOutput=position;
-        return;
-    }
     for (var w = 0; w < pos.length; w++) {
         p = pos[w];
         var countX = 0;
@@ -76,27 +77,25 @@ function response() {
             claim(p[blankO]);
             return;
         }
-
     }
 
     for (var w = 0; w < pos.length; w++) {
-        p = pos[w];
-        var countX = 0;
-        var countO = 0;
-        var blankO = -1;
-        for (var c = 0; c < 3; c++) {
-            if (board[p[c]] == 1) countX++;
-            if (board[p[c]] == 2) countO++;
-            if (board[p[c]] == 0) blankO = c;
-        }
+      p = pos[w];
+      var countX = 0;
+      var countO = 0;
+      var blankO = -1;
+      for (var c = 0; c < 3; c++) {
+          if (board[p[c]] == 1) countX++;
+          if (board[p[c]] == 2) countO++;
+          if (board[p[c]] == 0) blankO = c;
+      }
 
-        //2 avert sure loss when user has 2 in a row and blank
-        if (countX == 2 && blankO > -1) {
-            claim(p[blankO]);
-            return;
-        }
-
-    }
+      //2 avert sure loss when user has 2 in a row and blank
+      if (countX == 2 && blankO > -1) {
+          claim(p[blankO]);
+          return;
+      }
+  }
 
     //3 claim optimal middle if open
     if (board[4] == 0) {
@@ -119,7 +118,6 @@ function response() {
         return;
     }
 
-
     for (var w = 0; w < pos.length; w++) {
         p = pos[w];
         var countX = 0;
@@ -133,8 +131,6 @@ function response() {
 
         //4 avert user 2 in row when 1 in row and 2 blank by placing O in a corner
         if (countX == 1 && countO == 0 && blankO > -1) {
-
-
             if (p[blankO] == 0 && board[0] == 0) {
                 claim(0);
                 return;
@@ -151,9 +147,9 @@ function response() {
                 claim(8);
                 return;
             }
-
         }
     }
+
     for (var w = 0; w < pos.length; w++) {
         p = pos[w];
         var countX = 0;
@@ -167,12 +163,11 @@ function response() {
 
         //5 support yourself to 2 in a row when 1 in row and 2 blank
         if (countO == 1 && countX == 0 && blankO > -1) {
-
             claim(p[blankO]);
             return;
         }
-
     }
+  
     for (var w = 0; w < pos.length; w++) {
         p = pos[w];
         var countX = 0;
