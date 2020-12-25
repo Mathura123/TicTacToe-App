@@ -80,6 +80,8 @@ body {
 }
 
 .centerBody {
+  display: flex;
+  flex-direction: column;
   width: 40%;
   height: 100%;
 }
@@ -189,20 +191,21 @@ body {
 }
 
 .gameSituation {
-  width: 40%;
   height: 40%;
+  width: 40%;
   display: none;
   position: absolute;
-  margin: 11% 20%;
-  padding: 5% 10% 5% 10%;
+  padding: 5% 10%;
+  justify-self: center;
+  align-self: center;
+  margin: 11%;
   color: #ffd000;
   font-family: sans-serif;
   background-color: #000000;
-  opacity: 0.5;
+  opacity: 1;
   top: 0;
   transform: translate(-50% -50%);
   text-transform: uppercase;
-  display: block;
   text-align: center;
   font-size: 500%;
   font-weight: 700;
@@ -214,10 +217,10 @@ body {
     color: black;
   }
   30% {
-    letter-spacing: 16px;
+    letter-spacing: 12px;
   }
   85% {
-    letter-spacing: 20%;
+    letter-spacing: 8px;
   }
 }
 
@@ -258,8 +261,6 @@ body {
   text-align: center;
   width: 100%;
   margin-top: 2%;
-  margin-bottom: 0%;
-  position: fixed;
 }
 
 svg {

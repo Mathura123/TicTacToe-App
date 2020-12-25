@@ -1,5 +1,6 @@
 import $ from "jquery";
 import axios from "axios";
+import gameOver from "../assets/gameover.png";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector(".content").style.display = "flex";
@@ -154,9 +155,17 @@ function postGameSitutaionToDB(situationInt) {
 
 function displayGameSituationInLabel(situation) {
   if (situation === "WIN" || situation === "LOSE") {
-    document.getElementById("gameSituation").textContent = `YOU ${situation}`;
+    document.getElementById(
+      "gameSituation"
+    ).innerHTML = `YOU ${situation}       
+    <img src=${gameOver} alt="" height="50%" width="50%" />
+    `;
   } else if (situation === "TIED") {
-    document.getElementById("gameSituation").textContent = `GAME ${situation}`;
+    document.getElementById(
+      "gameSituation"
+    ).innerHTML = `GAME ${situation}       
+    <img src=${gameOver} alt="" height="60%" width="60%" />
+    `;
   }
 }
 
