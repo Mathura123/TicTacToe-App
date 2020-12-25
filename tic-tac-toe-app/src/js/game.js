@@ -14,11 +14,10 @@ let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X"; //new
 let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let clickable = [true,true,true,true,true,true,true,true,true];
-let turn = "uesr";
-let chances = ["User", "Computer"];
+let chances = ["User", "AI"];
 let random = Math.floor(Math.random() * chances.length);
 let firstChance = chances[random];
-let currentChance = chances[0];
+let currentChance = firstChance;
 let winPosibilities = [
   [1, 2, 3],
   [4, 5, 6],
@@ -33,6 +32,7 @@ let tiePossibility = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let userArray = [];
 let computerArray = [];
 let gameEnd = false;
+
 export function UpdateNameAndChoice() {
   playerName = localStorage.getItem("userName");
   choice = localStorage.getItem("userChoice");
@@ -42,8 +42,8 @@ export function UpdateNameAndChoice() {
   firstChance = chances[random];
   restart();
   loadPlayerInfo();
-  loadFirstChanceInfo();
 }
+
 export function AboutCreators() {
    document
     .getElementById("about-button")
@@ -51,6 +51,7 @@ export function AboutCreators() {
       document.querySelector(".modal-creators").style.display = "flex";
     });
 }
+
 export function PickChoice() {
   document.getElementById("new-user").addEventListener("click", function () {
     document.querySelector(".gameSituation").style.display = "none";
@@ -80,7 +81,7 @@ export function HelpClose() {
 
 export function workOnCell(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
-  if(clickable[selectedCellIndex]==true){
+  if(clickable[selectedCellIndex]){
     animateChar(node, choice);
     addCellIntoUserArray(selectedCellIndex);
     nextMove();
@@ -105,19 +106,23 @@ function addCellIntoUserArray(selectedCellIndex) {
   axios.post(uriUserInput, indexObj)
     .then(res => console.log(res.data));
   userArray.push(selectedCellIndex + 1);
-  turn = "Computer";
+  currentChance = "AI";
 }
 
 function nextMove(){
   getGameSituation();
-  if (turn === "Computer" && gameEnd === false) {
-    axios.get(uriComputerOutput)
+  if (currentChance === "AI" && gameEnd === false) {
+    getComputerMove()
+  }
+}
+
+function getComputerMove(){
+  axios.get(uriComputerOutput)
     .then(res=> {
-      console.log(`Computer Move: ${res.data}`);
+      console.log(`AI Move: ${res.data}`);
       workOnComputerOutput(res.data);
     });
-    turn="User";
-  }
+    currentChance="User";
 }
 
 function getGameSituation() {
@@ -196,6 +201,7 @@ export function restart() {
   board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   clickable = [true,true,true,true,true,true,true,true,true];
   gameEnd=false;
+  loadFirstChanceInfo();
   document.getElementById("gameSituation").textContent = "";
 }
 
@@ -210,7 +216,7 @@ export function loadPlayerInfo() {
   let innerHtml = `
   <div class="player-name"> PLAYER NAME: ${playerName}</div>
   <div class="player-sign">PLAYER'S CHOICE: ${choice}</div>
-  <div class="computer-sign">COMPUTER'S CHOICE: ${compChoice}</div>
+  <div class="computer-sign">AI'S CHOICE: ${compChoice}</div>
 `;
   document.querySelector("#player-info").innerHTML = innerHtml;
 }
@@ -218,28 +224,8 @@ export function loadPlayerInfo() {
 export function loadFirstChanceInfo() {
   document.querySelector(
     "#firstChance"
-  ).innerHTML = `${firstChance} got first chance`;
-  if (firstChance === "Computer") {
-    //response();
+  ).innerHTML = `${firstChance.toUpperCase()} Won the TOSS`;
+  if (firstChance === "AI") {
+    getComputerMove();
   }
-  /*if(firstChance==="Computer" && check===0)
-	{
-		restart();
-		let selectedCellIndex = Math.floor(Math.random() * 9);
-		computerArray.push((selectedCellIndex)+1);
-		board[selectedCellIndex]=computerChoice;
-		let n='block_'+selectedCellIndex;
-		animateChar(n, computerChoice);
-		turn='User';
-		firstChance="User";
-		//restart();
-		check=1;
-	}*/
-}
-
-export function loadCurrentChanceInfo() {
-  document.getElementById("currentChance").style.visibility = "visible";
-  document.querySelector(
-    "#currentChance"
-  ).innerHTML = `It's ${currentChance}'s turn`;
 }

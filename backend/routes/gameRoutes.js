@@ -1,8 +1,5 @@
 let computerOutput; 
-//let userArray = [];
-//let computerArray = [];
-let board;
-//let board=userInpt;
+let board = [0,0,0,0,0,0,0,0,0];
 var pos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -54,12 +51,6 @@ router.route("/computerOutput/").get((req, res) => {
 module.exports={
   router : router
 }
-
-
-
-
-
-//board[userInput]=1;
 
 function response() {
     board =variableObj["userInput"]
