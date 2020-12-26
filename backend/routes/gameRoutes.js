@@ -1,4 +1,4 @@
-const f=require('./../Algorithm/computerAlgo.js');
+const algo=require('./../Algorithm/computerAlgo.js');
 
 let computerOutput; 
 let board = [0,0,0,0,0,0,0,0,0];
@@ -31,7 +31,7 @@ router.route("/userInput/add").post((req, res) => {
   variableObj["userInput"] = req.body.userInput; 
   board =variableObj["userInput"]
   console.log(board)
-  computerOutput=f.response(board);
+  computerOutput=algo.response(board);
   console.log(`AI Move for FrontEnd ${computerOutput}`);
   res.json(computerOutput);
 });

@@ -1,3 +1,4 @@
+//winning positions
 var pos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -9,13 +10,14 @@ var pos = [
     [6, 4, 2]
 ];
 
+//function to calculate computer's move
 function response(board) {
     var p;
     for (var w = 0; w < pos.length; w++) {
         p = pos[w];
-        var countX = 0;
-        var countO = 0;
-        var blankO = -1;
+        var countX = 0;//count of user's choice
+        var countO = 0;//count of computer's choice
+        var blankO = -1;//flag to find the presence of blank spaces
         for (var c = 0; c < 3; c++) {
             if (board[p[c]] == 1) countX++;
             if (board[p[c]] == 2) countO++;
