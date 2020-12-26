@@ -13,8 +13,9 @@ const uriGetSet = "http://localhost:5000/game/userInput/add";
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X"; //new
-let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-let clickable = [true, true, true, true, true, true, true, true, true];
+let board = Array(9).fill(0);
+let falseClickable = Array(9).fill(false);
+let clickable = Array(9).fill(true);
 let chances = ["User", "AI"];
 let random = Math.floor(Math.random() * chances.length);
 let firstChance = chances[random];
@@ -94,6 +95,7 @@ function getGameSituation() {
 }
 
 async function getComputerMove() {
+  [clickable, falseClickable] = [falseClickable, clickable];
   let indexObj = {
     userInput: board,
   };
@@ -121,19 +123,19 @@ function displayGameSituationInLabel(situation) {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameWin} alt="" height="80%" width="60%" />
+    <img src=${gameWin} alt="" height="80%" width="50%" />
     `;
   } else if (situation === "LOSE") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameLose} alt="" height="80%" width="60%" />
+    <img src=${gameLose} alt="" height="80%" width="50%" />
     `;
   } else if (situation === "TIED") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `GAME ${situation}       
-    <img src=${gameTie} alt="" height="90%" width="60%" />
+    <img src=${gameTie} alt="" height="90%" width="50%" />
     `;
   }
 }
@@ -143,6 +145,7 @@ function workOnComputerMove(AIMove) {
   animateChar(node, computerChoice);
   computerArray.push(AIMove + 1);
   board[AIMove] = 2;
+  [clickable, falseClickable] = [falseClickable, clickable];
   clickable[AIMove] = false;
   getGameSituation();
 }
@@ -164,8 +167,9 @@ export function restart() {
   $(".circle-shown").removeClass("circle-shown");
   userArray = [];
   computerArray = [];
-  board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  clickable = [true, true, true, true, true, true, true, true, true];
+  board = Array(9).fill(0);
+  falseClickable = Array(9).fill(false);
+  clickable = Array(9).fill(true);
   gameEnd = false;
   currentChance = firstChance;
   loadFirstChanceInfo();
