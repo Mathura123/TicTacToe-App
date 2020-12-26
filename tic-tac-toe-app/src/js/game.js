@@ -97,7 +97,7 @@ function getGameSituation() {
 }
 
 async function getComputerMove() {
-  [clickable,falseClickable]=[falseClickable,clickable];
+  [clickable, falseClickable] = [falseClickable, clickable];
   let indexObj = {
     userInput: board,
   };
@@ -125,19 +125,19 @@ function displayGameSituationInLabel(situation) {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameWin} alt="" height="80%" width="60%" />
+    <img src=${gameWin} alt="" height="80%" width="50%" />
     `;
   } else if (situation === "LOSE") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameLose} alt="" height="80%" width="60%" />
+    <img src=${gameLose} alt="" height="80%" width="50%" />
     `;
   } else if (situation === "TIED") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `GAME ${situation}       
-    <img src=${gameTie} alt="" height="90%" width="60%" />
+    <img src=${gameTie} alt="" height="90%" width="50%" />
     `;
   }
 }
@@ -161,7 +161,7 @@ function workOnComputerMove(AIMove) {
   animateChar(node, computerChoice);
   computerArray.push(AIMove + 1);
   board[AIMove] = 2;
-  [clickable,falseClickable]=[falseClickable,clickable];
+  [clickable, falseClickable] = [falseClickable, clickable];
   clickable[AIMove] = false;
   getGameSituation();
 }
