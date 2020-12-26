@@ -1,18 +1,20 @@
 import $ from "jquery";
 import axios from "axios";
-import gameOver from "../assets/gameover.png";
+import gameLose from "../assets/forLose.gif";
+import gameTie from "../assets/Tie.gif";
+import gameWin from "../assets/forWin.gif";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector(".content").style.display = "flex";
 });
 
 const uri = "http://localhost:5000/game/add";
-const uriGetSet = 'http://localhost:5000/game/userInput/add';
+const uriGetSet = "http://localhost:5000/game/userInput/add";
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X"; //new
 let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-let clickable = [true,true,true,true,true,true,true,true,true];
+let clickable = [true, true, true, true, true, true, true, true, true];
 let chances = ["User", "AI"];
 let random = Math.floor(Math.random() * chances.length);
 let firstChance = chances[random];
@@ -34,7 +36,7 @@ let gameEnd = false;
 
 export function workOnCell(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
-  if(clickable[selectedCellIndex]){
+  if (clickable[selectedCellIndex]) {
     animateChar(node, choice);
     addCellIntoUserArray(selectedCellIndex);
     nextMove();
@@ -51,13 +53,13 @@ function animateChar(node, print) {
 }
 
 function addCellIntoUserArray(selectedCellIndex) {
-  board[selectedCellIndex]=1;
-  clickable[selectedCellIndex]=false;
+  board[selectedCellIndex] = 1;
+  clickable[selectedCellIndex] = false;
   userArray.push(selectedCellIndex + 1);
   currentChance = "AI";
 }
 
-function nextMove(){
+function nextMove() {
   getGameSituation();
   if (currentChance === "AI" && gameEnd === false) {
     getComputerMove();
@@ -67,33 +69,38 @@ function nextMove(){
 function getGameSituation() {
   let totalSelects = userArray.concat(computerArray);
   totalSelects.sort();
-  if (winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))) {
+  if (
+    winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))
+  ) {
     postGameSitutaionToDB(2);
     GameResult();
     displayGameSituationInLabel("WIN");
-    gameEnd=true;
-  } else if (winPosibilities.some((arr) =>arr.every((cell) => computerArray.includes(cell)))) {
+    gameEnd = true;
+  } else if (
+    winPosibilities.some((arr) =>
+      arr.every((cell) => computerArray.includes(cell))
+    )
+  ) {
     postGameSitutaionToDB(0);
     GameResult();
     displayGameSituationInLabel("LOSE");
-    gameEnd=true;
+    gameEnd = true;
   } else if (JSON.stringify(tiePossibility) === JSON.stringify(totalSelects)) {
     postGameSitutaionToDB(1);
     GameResult();
     displayGameSituationInLabel("TIED");
-    gameEnd=true;
-  } 
+    gameEnd = true;
+  }
 }
 
-async function getComputerMove()
-{
-  let indexObj ={
-    "userInput" : board
-  }
-  let res = await axios.post(uriGetSet, indexObj)
-    
-  console.log(`AI Moves in cell : ${res.data+1}`);
-  let AIMove=res.data
+async function getComputerMove() {
+  let indexObj = {
+    userInput: board,
+  };
+  let res = await axios.post(uriGetSet, indexObj);
+
+  console.log(`AI Moves in cell : ${res.data + 1}`);
+  let AIMove = res.data;
   workOnComputerMove(AIMove);
 }
 
@@ -110,28 +117,33 @@ function GameResult() {
 }
 
 function displayGameSituationInLabel(situation) {
-  if (situation === "WIN" || situation === "LOSE") {
+  if (situation === "WIN") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameOver} alt="" height="50%" width="50%" />
+    <img src=${gameWin} alt="" height="50%" width="50%" />
+    `;
+  } else if (situation === "LOSE") {
+    document.getElementById(
+      "gameSituation"
+    ).innerHTML = `YOU ${situation}       
+    <img src=${gameLose} alt="" height="60%" width="40%" />
     `;
   } else if (situation === "TIED") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `GAME ${situation}       
-    <img src=${gameOver} alt="" height="60%" width="60%" />
+    <img src=${gameTie} alt="" height="60%" width="60%" />
     `;
   }
 }
 
-function workOnComputerMove(AIMove)
-{
-  let node="block_"+AIMove;
+function workOnComputerMove(AIMove) {
+  let node = "block_" + AIMove;
   animateChar(node, computerChoice);
-  computerArray.push(AIMove+1);
-  board[AIMove]=2;
-  clickable[AIMove]=false;
+  computerArray.push(AIMove + 1);
+  board[AIMove] = 2;
+  clickable[AIMove] = false;
   getGameSituation();
 }
 
@@ -153,9 +165,9 @@ export function restart() {
   userArray = [];
   computerArray = [];
   board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  clickable = [true,true,true,true,true,true,true,true,true];
-  gameEnd=false;
-  currentChance=firstChance;
+  clickable = [true, true, true, true, true, true, true, true, true];
+  gameEnd = false;
+  currentChance = firstChance;
   loadFirstChanceInfo();
   document.getElementById("gameSituation").textContent = "";
 }
