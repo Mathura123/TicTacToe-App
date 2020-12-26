@@ -139,5 +139,11 @@ input[type="text"]:focus {
 @media screen and (max-width: 1024px) {
   .content {
     width: 130%;
+    height: 150%;
+  }
+}
+@media screen and (max-height: 731px) {
+  .content {
+    height: 900px;
   }
 }

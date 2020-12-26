@@ -6,7 +6,6 @@ body {
   background-color: #38033a;
 }
 
-
 .header {
   background-color: #ffffff;
   display: flex;
@@ -193,7 +192,7 @@ body {
 
 .gameSituation {
   height: 30%;
-  width: 30%;
+  width: 40%;
   display: none;
   position: absolute;
   padding: 0% 0% 10% 0%;
@@ -201,10 +200,10 @@ body {
   align-self: center;
   margin: 11%;
   color: #ffffff;
-  background-image: linear-gradient(45deg, #000000, #09919b, #000000);
+  background-image: linear-gradient(45deg, #000000, #ff0062, #000000);
   background-clip: text;
   font-family: sans-serif;
-  background-color: #09919b;
+  background-color: #000000;
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -221,10 +220,7 @@ body {
   animation: text 3s 1;
 }
 @keyframes text {
-  0% {
-    color: black;
-  }
-  30% {
+  40% {
     letter-spacing: 12px;
   }
   85% {
@@ -268,7 +264,7 @@ body {
   font-size: 100%;
   text-align: center;
   width: 100%;
-  margin-top: 2%;
+  margin-top: 5%;
 }
 
 svg {
