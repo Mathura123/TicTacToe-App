@@ -5,7 +5,7 @@ import gameTie from "../assets/forTie.gif";
 import gameWin from "../assets/forWin.gif";
 
 window.addEventListener("DOMContentLoaded", (event) => {
-  document.querySelector(".content").style.display = "flex";
+  document.querySelector(".content").style.display = "block";
 });
 
 const uri = "http://localhost:5000/game/add";
@@ -121,19 +121,19 @@ function displayGameSituationInLabel(situation) {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameWin} alt="" height="80%" width="60%" />
+    <img src=${gameWin} alt="" height="80%" width="50%" />
     `;
   } else if (situation === "LOSE") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameLose} alt="" height="80%" width="60%" />
+    <img src=${gameLose} alt="" height="80%" width="50%" />
     `;
   } else if (situation === "TIED") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `GAME ${situation}       
-    <img src=${gameTie} alt="" height="90%" width="60%" />
+    <img src=${gameTie} alt="" height="90%" width="50%" />
     `;
   }
 }
