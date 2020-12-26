@@ -2,7 +2,6 @@ import "../../css/pickChoice.css";
 import React from "react";
 import {UpdateNameAndChoice} from "../game.js";
 
-
 class PickChoice extends React.Component {
   constructor(props) {
     super(props);
@@ -17,27 +16,33 @@ class PickChoice extends React.Component {
     if (buttonId === "cross") {
     this.setState({bool : true});
     this.setState({char : "X"});
-  }
-  if (buttonId === "circle") {
+    if(this.state.err==="You need to Choose any one Option"){
+      this.setState({err: ""});
+      } 
+    }
+    if (buttonId === "circle") {
     this.setState({bool : true});
     this.setState({char : "O"});
-  }
+    if(this.state.err==="You need to Choose any one Option"){
+      this.setState({err: ""});
+      } 
+    }
   }
   updateName(){
     this.setState( {name: document.getElementById("name").value});
   }
   continueOnClick(){
-    if (this.state.bool === true && document.getElementById("name").value) {
-      
+    if (this.state.bool === true && document.getElementById("name").value) {  
       localStorage.removeItem("userChoice");
       localStorage.removeItem("userName");
       localStorage.setItem("userChoice", this.state.char);
       localStorage.setItem("userName", this.state.name);
-      UpdateNameAndChoice();
+      this.setState({err: ""});
+    UpdateNameAndChoice();
     } else if (!this.state.bool) {
-      document.querySelector(".error-output").textContent ="You need to Choose any one Option";
+      this.setState({err: "You need to Choose any one Option"});
     } else {
-      document.querySelector(".error-output").textContent = "Name is required";
+      this.setState({err: "Name is required"});
     }
   }
   render() {
