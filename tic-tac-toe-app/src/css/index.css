@@ -228,6 +228,10 @@ body {
   }
 }
 
+.animateOnEnd{
+  background-color: red;
+}
+
 .new-game-buttons {
   display: flex;
   flex-direction: row;
