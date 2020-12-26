@@ -330,13 +330,14 @@ svg {
 }
 
 .creators-contents {
-  height: 500px;
+  height: 700px;
   width: 800px;
   background-color: #000000ef;
   text-align: left;
   padding: 10px;
-  position: relative;
+  position: absolute;
   border-radius: 4px;
+  justify-content: center;
 }
 
 .creators-heading {
@@ -433,6 +434,14 @@ svg {
   }
   .rules {
     font-size: 100%;
+  }
+  .modal-creators {
+    height: 130%;
+  }
+  .creators-contents {
+    top: 10px;
+    height: 110%;
+    width: 80%;
   }
 }
 @media screen and (min-width: 1024px) {
