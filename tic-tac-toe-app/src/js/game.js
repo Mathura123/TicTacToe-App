@@ -124,20 +124,20 @@ function displayGameSituationInLabel(situation) {
   if (situation === "WIN") {
     document.getElementById(
       "gameSituation"
-    ).innerHTML = `YOU ${situation}       
-    <img src=${gameWin} alt="" />
+    ).innerHTML = `<span><div>YOU ${situation}</div>       
+    <img src=${gameWin} alt="" height=90% width=40%/></span>
     `;
   } else if (situation === "LOSE") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `<span><div>YOU ${situation}</div>       
-    <img src=${gameLose} alt="" /></span>
+    <img src=${gameLose} alt="" height=90% width=40%/></span>
     `;
   } else if (situation === "TIED") {
     document.getElementById(
       "gameSituation"
-    ).innerHTML = `GAME ${situation}       
-    <img src=${gameTie} alt="" />
+    ).innerHTML = `<span><div>GAME ${situation}</div>  
+    <img src=${gameTie} alt="" height=90% width=40%/></span>
     `;
   }
 }
