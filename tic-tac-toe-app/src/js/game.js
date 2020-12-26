@@ -1,7 +1,7 @@
 import $ from "jquery";
 import axios from "axios";
 import gameLose from "../assets/forLose.gif";
-import gameTie from "../assets/Tie.gif";
+import gameTie from "../assets/forTie.gif";
 import gameWin from "../assets/forWin.gif";
 
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -121,19 +121,19 @@ function displayGameSituationInLabel(situation) {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameWin} alt="" height="50%" width="50%" />
+    <img src=${gameWin} alt="" height="80%" width="60%" />
     `;
   } else if (situation === "LOSE") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameLose} alt="" height="60%" width="40%" />
+    <img src=${gameLose} alt="" height="80%" width="60%" />
     `;
   } else if (situation === "TIED") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `GAME ${situation}       
-    <img src=${gameTie} alt="" height="60%" width="60%" />
+    <img src=${gameTie} alt="" height="90%" width="60%" />
     `;
   }
 }
