@@ -5,7 +5,7 @@ import gameTie from "../assets/forTie.gif";
 import gameWin from "../assets/forWin.gif";
 
 window.addEventListener("DOMContentLoaded", (event) => {
-  document.querySelector(".content").style.display = "block";
+  document.querySelector(".content").style.display = "flex";
 });
 
 const uri = "http://localhost:5000/game/add";
@@ -95,7 +95,7 @@ function getGameSituation() {
 }
 
 async function getComputerMove() {
-  [clickable,falseClickable]=[falseClickable,clickable];
+  [clickable, falseClickable] = [falseClickable, clickable];
   let indexObj = {
     userInput: board,
   };
@@ -145,7 +145,7 @@ function workOnComputerMove(AIMove) {
   animateChar(node, computerChoice);
   computerArray.push(AIMove + 1);
   board[AIMove] = 2;
-  [clickable,falseClickable]=[falseClickable,clickable];
+  [clickable, falseClickable] = [falseClickable, clickable];
   clickable[AIMove] = false;
   getGameSituation();
 }
