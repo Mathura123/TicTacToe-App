@@ -3,7 +3,7 @@ import TabLogo from "../../assets/TabLogo.png";
 import "../../css/index.css";
 function Header(props) {
   return (
-    <header class="header" id="header">
+    <header className="header" id="header">
       <div className="heading">
         <img className="heading-image" src={TabLogo} alt=" " />
         <div className="heading-content">

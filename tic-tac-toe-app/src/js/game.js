@@ -32,30 +32,19 @@ let userArray = [];
 let computerArray = [];
 let gameEnd = false;
 
-export function UpdateNameAndChoice() {
-  playerName = localStorage.getItem("userName");
-  choice = localStorage.getItem("userChoice");
-  computerChoice = choice === "X" ? "O" : "X";
-  document.querySelector(".content").style.display = "none";
-  random = Math.floor(Math.random() * chances.length);
-  firstChance = chances[random];
-  restart();
-  loadPlayerInfo();
-}
-
-export function AboutCreators() {
-   document
-    .getElementById("about-button")
-    .addEventListener("click", function () {
-      document.querySelector(".modal-creators").style.display = "flex";
-    });
-}
-
 export function PickChoice() {
   document.getElementById("new-user").addEventListener("click", function () {
     document.querySelector(".gameSituation").style.display = "none";
     document.querySelector(".content").style.display = "flex";
   });
+}
+
+export function AboutCreators() {
+  document
+   .getElementById("about-button")
+   .addEventListener("click", function () {
+     document.querySelector(".modal-creators").style.display = "flex";
+   });
 }
 
 export function CreatorsClose() {
@@ -131,14 +120,16 @@ function getGameSituation() {
   } 
 }
 
-function workOnComputerMove(AIMove)
+async function getComputerMove()
 {
-  let node="block_"+AIMove;
-  animateChar(node, computerChoice);
-  computerArray.push(AIMove+1);
-  board[AIMove]=2;
-  clickable[AIMove]=false;
-  getGameSituation();
+  let indexObj ={
+    "userInput" : board
+  }
+  let res = await axios.post(uriGetSet, indexObj)
+    
+  console.log(`AI Moves in cell : ${res.data+1}`);
+  let AIMove=res.data
+  workOnComputerMove(AIMove);
 }
 
 function postGameSitutaionToDB(situationInt) {
@@ -147,6 +138,10 @@ function postGameSitutaionToDB(situationInt) {
     gameSituation: situationInt,
   };
   axios.post(uri, gameObj).then((res) => console.log(res.data));
+}
+
+function GameResult() {
+  document.querySelector(".gameSituation").style.display = "block";
 }
 
 function displayGameSituationInLabel(situation) {
@@ -165,8 +160,25 @@ function displayGameSituationInLabel(situation) {
   }
 }
 
-function GameResult() {
-  document.querySelector(".gameSituation").style.display = "block";
+function workOnComputerMove(AIMove)
+{
+  let node="block_"+AIMove;
+  animateChar(node, computerChoice);
+  computerArray.push(AIMove+1);
+  board[AIMove]=2;
+  clickable[AIMove]=false;
+  getGameSituation();
+}
+
+export function UpdateNameAndChoice() {
+  playerName = localStorage.getItem("userName");
+  choice = localStorage.getItem("userChoice");
+  computerChoice = choice === "X" ? "O" : "X";
+  document.querySelector(".content").style.display = "none";
+  random = Math.floor(Math.random() * chances.length);
+  firstChance = chances[random];
+  restart();
+  loadPlayerInfo();
 }
 
 export function restart() {
@@ -204,16 +216,4 @@ export function loadFirstChanceInfo() {
   if (firstChance === "AI") {
     getComputerMove();
   }
-}
-
-async function getComputerMove()
-{
-  let indexObj ={
-    "userInput" : board
-  }
-  let res = await axios.post(uriGetSet, indexObj)
-    
-  console.log(`AI Moves in cell : ${res.data+1}`);
-  let AIMove=res.data
-  workOnComputerMove(AIMove);
 }
