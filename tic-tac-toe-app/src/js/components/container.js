@@ -12,12 +12,10 @@ class HelpInfo extends React.Component {
   }
   render() {
     return (
-    <div className="help-info">
-      <div className="help" id="help">
-        <img src={helpboard} alt="" height="50%" width="50%" />
+      <div className="help-info">
+        <img id="help" src={helpboard} alt="" height="50%" width="50%" />
       </div>
-    </div>
-  );
+    );
   }
 }
 class PlayerInfo extends React.Component {
