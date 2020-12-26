@@ -32,13 +32,6 @@ let userArray = [];
 let computerArray = [];
 let gameEnd = false;
 
-export function PickChoice() {
-  document.getElementById("new-user").addEventListener("click", function () {
-    document.querySelector(".gameSituation").style.display = "none";
-    document.querySelector(".content").style.display = "flex";
-  });
-}
-
 export function workOnCell(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
   if(clickable[selectedCellIndex]){
