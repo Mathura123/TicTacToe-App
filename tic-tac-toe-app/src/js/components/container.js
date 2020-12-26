@@ -1,18 +1,24 @@
 import CenterBody from "./centerBody";
-import { Help } from "../game.js";
 import { loadPlayerInfo } from "../game.js";
 import React from "react";
 import helpboard from "../../assets/helpboard.png";
 import "../../css/index.css";
 
-function HelpInfo(props) {
-  return (
+class HelpInfo extends React.Component {
+  componentDidMount() {
+    document.getElementById("help").addEventListener("click", function () {
+      document.querySelector(".modal-help").style.display = "flex";
+    });
+  }
+  render() {
+    return (
     <div className="help-info">
       <div className="help" id="help">
-        <img src={helpboard} alt="" height="50%" width="50%" onClick={Help} />
+        <img src={helpboard} alt="" height="50%" width="50%" />
       </div>
     </div>
   );
+  }
 }
 class PlayerInfo extends React.Component {
   componentDidMount() {
@@ -24,7 +30,7 @@ class PlayerInfo extends React.Component {
 }
 function Container(props) {
   return (
-    <div class="container" id="container">
+    <div className="container" id="container">
       <HelpInfo />
       <CenterBody />
       <PlayerInfo />

@@ -7,8 +7,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const uri = "http://localhost:5000/game/add";
-const uriUserInput = 'http://localhost:5000/game/userInput/add';
-const uriComputerOutput = 'http://localhost:5000/game/computerOutput/';
+const uriGetSet = 'http://localhost:5000/game/userInput/add';
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X"; //new
@@ -33,49 +32,10 @@ let userArray = [];
 let computerArray = [];
 let gameEnd = false;
 
-export function UpdateNameAndChoice() {
-  playerName = localStorage.getItem("userName");
-  choice = localStorage.getItem("userChoice");
-  computerChoice = choice === "X" ? "O" : "X";
-  document.querySelector(".content").style.display = "none";
-  random = Math.floor(Math.random() * chances.length);
-  firstChance = chances[random];
-  restart();
-  loadPlayerInfo();
-}
-
-export function AboutCreators() {
-   document
-    .getElementById("about-button")
-    .addEventListener("click", function () {
-      document.querySelector(".modal-creators").style.display = "flex";
-    });
-}
-
 export function PickChoice() {
   document.getElementById("new-user").addEventListener("click", function () {
     document.querySelector(".gameSituation").style.display = "none";
     document.querySelector(".content").style.display = "flex";
-  });
-}
-
-export function CreatorsClose() {
-  document
-    .querySelector(".creators-close")
-    .addEventListener("click", function () {
-      document.querySelector(".modal-creators").style.display = "none";
-    });
-}
-
-export function Help() {
-  document.getElementById("help").addEventListener("click", function () {
-    document.querySelector(".modal-help").style.display = "flex";
-  });
-}
-
-export function HelpClose() {
-  document.querySelector(".help-close").addEventListener("click", function () {
-    document.querySelector(".modal-help").style.display = "none";
   });
 }
 
@@ -100,11 +60,6 @@ function animateChar(node, print) {
 function addCellIntoUserArray(selectedCellIndex) {
   board[selectedCellIndex]=1;
   clickable[selectedCellIndex]=false;
-  let indexObj ={
-    "userInput" : board
-  }
-  axios.post(uriUserInput, indexObj)
-    .then(res => console.log(res.data));
   userArray.push(selectedCellIndex + 1);
   currentChance = "AI";
 }
@@ -112,24 +67,15 @@ function addCellIntoUserArray(selectedCellIndex) {
 function nextMove(){
   getGameSituation();
   if (currentChance === "AI" && gameEnd === false) {
-    getComputerMove()
+    getComputerMove();
   }
-}
-
-function getComputerMove(){
-  axios.get(uriComputerOutput)
-    .then(res=> {
-      console.log(`AI Move: ${res.data}`);
-      workOnComputerOutput(res.data);
-    });
-    currentChance="User";
 }
 
 function getGameSituation() {
   let totalSelects = userArray.concat(computerArray);
   totalSelects.sort();
   if (winPosibilities.some((arr) => arr.every((cell) => userArray.includes(cell)))) {
-    postGameSitutaionToDB(1);
+    postGameSitutaionToDB(2);
     GameResult();
     displayGameSituationInLabel("WIN");
     gameEnd=true;
@@ -139,21 +85,23 @@ function getGameSituation() {
     displayGameSituationInLabel("LOSE");
     gameEnd=true;
   } else if (JSON.stringify(tiePossibility) === JSON.stringify(totalSelects)) {
-    postGameSitutaionToDB(2);
+    postGameSitutaionToDB(1);
     GameResult();
     displayGameSituationInLabel("TIED");
     gameEnd=true;
   } 
 }
 
-function workOnComputerOutput(computerMove)
+async function getComputerMove()
 {
-  let node="block_"+computerMove;
-  animateChar(node, computerChoice);
-  computerArray.push(computerMove+1);
-  board[computerMove]=2;
-  clickable[computerMove]=false;
-  getGameSituation();
+  let indexObj ={
+    "userInput" : board
+  }
+  let res = await axios.post(uriGetSet, indexObj)
+    
+  console.log(`AI Moves in cell : ${res.data+1}`);
+  let AIMove=res.data
+  workOnComputerMove(AIMove);
 }
 
 function postGameSitutaionToDB(situationInt) {
@@ -162,6 +110,10 @@ function postGameSitutaionToDB(situationInt) {
     gameSituation: situationInt,
   };
   axios.post(uri, gameObj).then((res) => console.log(res.data));
+}
+
+function GameResult() {
+  document.querySelector(".gameSituation").style.display = "block";
 }
 
 function displayGameSituationInLabel(situation) {
@@ -180,8 +132,25 @@ function displayGameSituationInLabel(situation) {
   }
 }
 
-function GameResult() {
-  document.querySelector(".gameSituation").style.display = "block";
+function workOnComputerMove(AIMove)
+{
+  let node="block_"+AIMove;
+  animateChar(node, computerChoice);
+  computerArray.push(AIMove+1);
+  board[AIMove]=2;
+  clickable[AIMove]=false;
+  getGameSituation();
+}
+
+export function UpdateNameAndChoice() {
+  playerName = localStorage.getItem("userName");
+  choice = localStorage.getItem("userChoice");
+  computerChoice = choice === "X" ? "O" : "X";
+  document.querySelector(".content").style.display = "none";
+  random = Math.floor(Math.random() * chances.length);
+  firstChance = chances[random];
+  restart();
+  loadPlayerInfo();
 }
 
 export function restart() {
@@ -193,6 +162,7 @@ export function restart() {
   board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   clickable = [true,true,true,true,true,true,true,true,true];
   gameEnd=false;
+  currentChance=firstChance;
   loadFirstChanceInfo();
   document.getElementById("gameSituation").textContent = "";
 }
@@ -202,9 +172,7 @@ export function loadPlayerInfo() {
   if (choice === "X") compChoice = "O";
   else if (choice === "O") compChoice = "X";
   else compChoice = " ";
-
   computerChoice = compChoice;
-
   let innerHtml = `
   <div class="player-name"> PLAYER NAME: ${playerName}</div>
   <div class="player-sign">PLAYER'S CHOICE: ${choice}</div>

@@ -1,16 +1,23 @@
-import {CreatorsClose} from '../game.js'
-import {HelpClose} from '../game.js'
+import React from "react";
 import siddhi from '../../assets/siddhi.jpeg'
 import mathura from '../../assets/mathura.jpeg'
 import '../../css/index.css';
 import '../game.js'
 
 
-function Creators(props) {
-  return (
+class Creators extends React.Component {
+  componentDidMount() {
+    document
+      .querySelector(".creators-close")
+      .addEventListener("click", function () {
+        document.querySelector(".modal-creators").style.display = "none";
+      });
+  }
+  render(){
+    return (
     <div className="modal-creators">
       <div className="creators-contents">
-        <div className="creators-close" onClick={CreatorsClose}>
+        <div className="creators-close">
           +
         </div>
         <div className="creators">
@@ -42,12 +49,19 @@ function Creators(props) {
       </div>
     </div>
   );
+  }
 }
-function Rules(props) {
-  return (
+class Rules extends React.Component {
+  componentDidMount() {
+    document.querySelector(".help-close").addEventListener("click", function () {
+      document.querySelector(".modal-help").style.display = "none";
+    });
+  }
+  render(){
+    return (
     <div className="modal-help">
       <div className="help-contents">
-        <div className="help-close" onClick={HelpClose}>
+        <div className="help-close">
           +
         </div>
         <div className="rules">
@@ -71,6 +85,7 @@ function Rules(props) {
       </div>
     </div>
   );
+  }
 }
 function Popups(props) {
   return (
