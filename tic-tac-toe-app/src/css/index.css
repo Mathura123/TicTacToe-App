@@ -191,6 +191,7 @@ body {
 }
 
 .gameSituation {
+  z-index: 1;
   height: 30%;
   width: 40%;
   display: none;
@@ -229,10 +230,11 @@ body {
 }
 
 .animateOnEnd {
-  background-color: red;
+  background-color: rgb(212, 57, 57);
 }
 
 .new-game-buttons {
+  z-index: 2;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -316,6 +318,7 @@ svg {
 }
 
 .modal-creators {
+  z-index: 3;
   background-color: rgba(0, 0, 5, 0.8);
   width: 100%;
   height: 100%;
@@ -374,6 +377,7 @@ svg {
 }
 
 .modal-help {
+  z-index: 3;
   background-color: rgba(0, 0, 5, 0.8);
   width: 100%;
   height: 100%;
@@ -443,7 +447,6 @@ svg {
   .gameSituation {
     height: 30%;
     width: 50%;
-    top: 10%;
     font-size: 300%;
     font-weight: 900;
     letter-spacing: 5px;

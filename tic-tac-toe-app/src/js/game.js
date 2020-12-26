@@ -75,8 +75,8 @@ function getGameSituation() {
   ) {
     postGameSitutaionToDB(2);
     GameResult();
-    displayGameSituationInLabel("WIN");
     addAnimateOnEndClass("WIN");
+    displayGameSituationInLabel("WIN");
     gameEnd = true;
   } else if (
     winPosibilities.some((arr) =>
@@ -85,8 +85,8 @@ function getGameSituation() {
   ) {
     postGameSitutaionToDB(0);
     GameResult();
-    displayGameSituationInLabel("LOSE");
     addAnimateOnEndClass("LOSE");
+    displayGameSituationInLabel("LOSE");
     gameEnd = true;
   } else if (JSON.stringify(tiePossibility) === JSON.stringify(totalSelects)) {
     postGameSitutaionToDB(1);
@@ -125,35 +125,38 @@ function displayGameSituationInLabel(situation) {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `YOU ${situation}       
-    <img src=${gameWin} alt="" height="80%" width="50%" />
+    <img src=${gameWin} alt="" />
     `;
   } else if (situation === "LOSE") {
     document.getElementById(
       "gameSituation"
-    ).innerHTML = `YOU ${situation}       
-    <img src=${gameLose} alt="" height="80%" width="50%" />
+    ).innerHTML = `<span><div>YOU ${situation}</div>       
+    <img src=${gameLose} alt="" /></span>
     `;
   } else if (situation === "TIED") {
     document.getElementById(
       "gameSituation"
     ).innerHTML = `GAME ${situation}       
-    <img src=${gameTie} alt="" height="90%" width="50%" />
+    <img src=${gameTie} alt="" />
     `;
   }
 }
 
-function addAnimateOnEndClass(situation){
+function addAnimateOnEndClass(situation) {
   let cellsToIncludeClass;
-  if(situation==="WIN"){
-    cellsToIncludeClass= winPosibilities.find((arr) => arr.every((cell) => userArray.includes(cell)))
+  if (situation === "WIN") {
+    cellsToIncludeClass = winPosibilities.find((arr) =>
+      arr.every((cell) => userArray.includes(cell))
+    );
+  } else if (situation === "LOSE") {
+    cellsToIncludeClass = winPosibilities.find((arr) =>
+      arr.every((cell) => computerArray.includes(cell))
+    );
   }
-  else if(situation==="LOSE"){
-    cellsToIncludeClass= winPosibilities.find((arr) => arr.every((cell) => computerArray.includes(cell)))
-  }
-  cellsToIncludeClass.forEach(cell=>{
-    let block = `block_${cell-1}`;
+  cellsToIncludeClass.forEach((cell) => {
+    let block = `block_${cell - 1}`;
     $(`#${block}`).addClass("animateOnEnd");
-  })
+  });
 }
 
 function workOnComputerMove(AIMove) {
@@ -181,6 +184,7 @@ export function restart() {
   document.querySelector(".gameSituation").style.display = "none";
   $(".cross-shown").removeClass("cross-shown");
   $(".circle-shown").removeClass("circle-shown");
+  $(".animateOnEnd").removeClass("animateOnEnd");
   userArray = [];
   computerArray = [];
   board = Array(9).fill(0);
