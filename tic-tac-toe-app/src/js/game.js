@@ -7,8 +7,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const uri = "http://localhost:5000/game/add";
-const uriUserInput = 'http://localhost:5000/game/userInput/add';
-const uriComputerOutput = 'http://localhost:5000/game/computerOutput/';
+const uriGetSet = 'http://localhost:5000/game/userInput/add';
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X"; //new
@@ -100,7 +99,6 @@ function animateChar(node, print) {
 function addCellIntoUserArray(selectedCellIndex) {
   board[selectedCellIndex]=1;
   clickable[selectedCellIndex]=false;
-  postUserInput();
   userArray.push(selectedCellIndex + 1);
   currentChance = "AI";
 }
@@ -108,17 +106,8 @@ function addCellIntoUserArray(selectedCellIndex) {
 function nextMove(){
   getGameSituation();
   if (currentChance === "AI" && gameEnd === false) {
-    getComputerMove()
+    getComputerMove();
   }
-}
-
-function getComputerMove(){
-  axios.get(uriComputerOutput)
-    .then(res=> {
-      console.log(`AI Move: ${res.data}`);
-      workOnComputerOutput(res.data);
-    });
-    currentChance="User";
 }
 
 function getGameSituation() {
@@ -142,13 +131,13 @@ function getGameSituation() {
   } 
 }
 
-function workOnComputerOutput(computerMove)
+function workOnComputerMove(AIMove)
 {
-  let node="block_"+computerMove;
+  let node="block_"+AIMove;
   animateChar(node, computerChoice);
-  computerArray.push(computerMove+1);
-  board[computerMove]=2;
-  clickable[computerMove]=false;
+  computerArray.push(AIMove+1);
+  board[AIMove]=2;
+  clickable[AIMove]=false;
   getGameSituation();
 }
 
@@ -199,9 +188,7 @@ export function loadPlayerInfo() {
   if (choice === "X") compChoice = "O";
   else if (choice === "O") compChoice = "X";
   else compChoice = " ";
-
   computerChoice = compChoice;
-
   let innerHtml = `
   <div class="player-name"> PLAYER NAME: ${playerName}</div>
   <div class="player-sign">PLAYER'S CHOICE: ${choice}</div>
@@ -215,16 +202,18 @@ export function loadFirstChanceInfo() {
     "#firstChance"
   ).innerHTML = `${firstChance.toUpperCase()} Won the TOSS`;
   if (firstChance === "AI") {
-    postUserInput();
     getComputerMove();
   }
 }
 
-function postUserInput()
+async function getComputerMove()
 {
   let indexObj ={
     "userInput" : board
   }
-  axios.post(uriUserInput, indexObj)
-    .then(res => console.log("From postUserInput: "+res.data));
+  let res = await axios.post(uriGetSet, indexObj)
+    
+  console.log(`AI Moves in cell : ${res.data+1}`);
+  let AIMove=res.data
+  workOnComputerMove(AIMove);
 }

@@ -40,11 +40,7 @@ router.route("/userInput/add").post((req, res) => {
   board =variableObj["userInput"]
   console.log(board)
   response();
-  console.log(computerOutput);
-  res.json(computerOutput);
-});
-
-router.route("/computerOutput/").get((req, res) => {
+  console.log(`AI Move for FrontEnd ${computerOutput}`);
   res.json(computerOutput);
 });
 
