@@ -1,8 +1,18 @@
-import { AboutCreators } from "../game.js";
 import TabLogo from "../../assets/TabLogo.png";
+import React from "react";
 import "../../css/index.css";
-function Header(props) {
-  return (
+
+class Header extends React.Component {
+  componentDidMount() {
+    document
+     .getElementById("about-button")
+     .addEventListener("click", function () {
+       document.querySelector(".modal-creators").style.display = "flex";
+     });
+  }
+
+  render(){
+    return (
     <header className="header" id="header">
       <div className="heading">
         <img className="heading-image" src={TabLogo} alt=" " />
@@ -11,16 +21,13 @@ function Header(props) {
         </div>
       </div>
       <div className="button">
-        <button
-          className="about-button"
-          id="about-button"
-          onClick={AboutCreators}
-        >
+        <button className="about-button" id="about-button">
           About Creaters
         </button>
       </div>
     </header>
   );
+}
 }
 
 export default Header;

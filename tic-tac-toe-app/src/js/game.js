@@ -39,34 +39,6 @@ export function PickChoice() {
   });
 }
 
-export function AboutCreators() {
-  document
-   .getElementById("about-button")
-   .addEventListener("click", function () {
-     document.querySelector(".modal-creators").style.display = "flex";
-   });
-}
-
-export function CreatorsClose() {
-  document
-    .querySelector(".creators-close")
-    .addEventListener("click", function () {
-      document.querySelector(".modal-creators").style.display = "none";
-    });
-}
-
-export function Help() {
-  document.getElementById("help").addEventListener("click", function () {
-    document.querySelector(".modal-help").style.display = "flex";
-  });
-}
-
-export function HelpClose() {
-  document.querySelector(".help-close").addEventListener("click", function () {
-    document.querySelector(".modal-help").style.display = "none";
-  });
-}
-
 export function workOnCell(node) {
   let selectedCellIndex = parseInt(node.charAt(node.length - 1));
   if(clickable[selectedCellIndex]){
