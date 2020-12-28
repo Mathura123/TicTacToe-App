@@ -58,6 +58,7 @@ function addCellIntoUserArray(selectedCellIndex) {
   clickable[selectedCellIndex] = false;
   userArray.push(selectedCellIndex + 1);
   currentChance = "AI";
+  loadCurrentChanceInfo();
 }
 
 function nextMove() {
@@ -166,6 +167,8 @@ function workOnComputerMove(AIMove) {
   board[AIMove] = 2;
   [clickable, falseClickable] = [falseClickable, clickable];
   clickable[AIMove] = false;
+  currentChance ="User";
+  loadCurrentChanceInfo();
   getGameSituation();
 }
 
@@ -193,6 +196,7 @@ export function restart() {
   gameEnd = false;
   currentChance = firstChance;
   loadFirstChanceInfo();
+  loadCurrentChanceInfo();
   document.getElementById("gameSituation").textContent = "";
 }
 
@@ -220,8 +224,15 @@ export function loadFirstChanceInfo() {
 }
 
 export function loadCurrentChanceInfo() {
+  let innerHtml;
+  if(currentChance==="AI"){
+    innerHtml= 'AI is Thinking';
+  }
+  else if(currentChance==="User"){
+    innerHtml= "It's YOUR TURN";
+  }
   document.getElementById("currentChance").style.visibility = "visible";
   document.querySelector(
     "#currentChance"
-  ).innerHTML = `It's ${currentChance}'s turn`;
+  ).innerHTML = innerHtml;
 }
