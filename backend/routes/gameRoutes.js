@@ -6,6 +6,7 @@ let board = [0,0,0,0,0,0,0,0,0];
 const router = require("express").Router();
 let Game = require("../models/game.model");
 let variableObj={};
+
 router.route("/").get((req, res) => {
   Game.find()
     .then((games) => res.json(games))

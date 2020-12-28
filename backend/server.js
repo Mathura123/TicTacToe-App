@@ -21,6 +21,10 @@ const gameRouter = require("./routes/gameRoutes");
 
 app.use("/game", gameRouter.router);
 
+app.get('/',(req,res)=>{
+  res.send('Welcome to AI Powered TIC TAC TOE API');
+})
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

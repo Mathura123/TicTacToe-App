@@ -8,8 +8,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector(".content").style.display = "flex";
 });
 
-const uri = "http://localhost:5000/game/add";
-const uriGetSet = "http://localhost:5000/game/userInput/add";
+const uri = "https://ai-powered-tic-tac-toe.herokuapp.com/game/add";
+const uriGetSet = "https://ai-powered-tic-tac-toe.herokuapp.com/game/userInput/add";
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X"; //new
@@ -58,6 +58,7 @@ function addCellIntoUserArray(selectedCellIndex) {
   clickable[selectedCellIndex] = false;
   userArray.push(selectedCellIndex + 1);
   currentChance = "AI";
+  loadCurrentChanceInfo();
 }
 
 function nextMove() {
@@ -166,6 +167,8 @@ function workOnComputerMove(AIMove) {
   board[AIMove] = 2;
   [clickable, falseClickable] = [falseClickable, clickable];
   clickable[AIMove] = false;
+  currentChance ="User";
+  loadCurrentChanceInfo();
   getGameSituation();
 }
 
@@ -193,6 +196,7 @@ export function restart() {
   gameEnd = false;
   currentChance = firstChance;
   loadFirstChanceInfo();
+  loadCurrentChanceInfo();
   document.getElementById("gameSituation").textContent = "";
 }
 
@@ -217,4 +221,18 @@ export function loadFirstChanceInfo() {
   if (firstChance === "AI") {
     getComputerMove();
   }
+}
+
+export function loadCurrentChanceInfo() {
+  let innerHtml;
+  if(currentChance==="AI"){
+    innerHtml= 'AI is Thinking';
+  }
+  else if(currentChance==="User"){
+    innerHtml= "It's YOUR TURN";
+  }
+  document.getElementById("currentChance").style.visibility = "visible";
+  document.querySelector(
+    "#currentChance"
+  ).innerHTML = innerHtml;
 }
