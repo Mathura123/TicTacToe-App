@@ -218,3 +218,10 @@ export function loadFirstChanceInfo() {
     getComputerMove();
   }
 }
+
+export function loadCurrentChanceInfo() {
+  document.getElementById("currentChance").style.visibility = "visible";
+  document.querySelector(
+    "#currentChance"
+  ).innerHTML = `It's ${currentChance}'s turn`;
+}
