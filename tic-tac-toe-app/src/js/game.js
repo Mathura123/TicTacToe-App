@@ -8,8 +8,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector(".content").style.display = "flex";
 });
 
-const uri = "http://localhost:5000/game/add";
-const uriGetSet = "http://localhost:5000/game/userInput/add";
+const uri = "https://ai-powered-tic-tac-toe.herokuapp.com/game/add";
+const uriGetSet = "https://ai-powered-tic-tac-toe.herokuapp.com/game/userInput/add";
 let playerName = localStorage.getItem("userName");
 let choice = localStorage.getItem("userChoice");
 let computerChoice = choice === "X" ? "O" : "X"; //new

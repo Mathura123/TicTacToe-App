@@ -191,15 +191,17 @@ body {
   align-self: center;
   margin: 11%;
   color: #ffffff;
-  background-image: linear-gradient(45deg, #000000, #0964b9, #000000);
+  background-image: linear-gradient(45deg, #000000, #576879, #000000);
   background-clip: text;
   font-family: sans-serif;
   background-color: #000000;
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
+  -o-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
+  -o-text-fill-color: transparent;
   opacity: 1;
   top: 2%;
   transform: translate(-50% -50%);
