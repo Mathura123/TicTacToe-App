@@ -2,7 +2,7 @@
 
 ### A fun game build on MERN Stack where the Computer plays with user like a pro.
 ### Some of the technologies used were:
-### * MongoDb
+* MongoDb
 ### * Node.js
 ### * React.js
 ### * Express
