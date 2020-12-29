@@ -177,4 +177,7 @@ input[type="text"]:focus {
     font-size: 300%;
     font-weight: 800;
   }
+  .error-output {
+    font-size: 400%;
+  }
 }
