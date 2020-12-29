@@ -148,33 +148,33 @@ input[type="text"]:focus {
     padding-top: 20%;
   }
   .glow-header {
-    font-size: 600%;
+    font-size: 900%;
   }
   .choice-button {
-    margin-top: 10%;
+    margin-top: 15%;
     border-radius: 20%;
-    border-width: 10%;
+    border-width: 15%;
     padding: 40% 80%;
     text-align: center;
-    font-size: 600%;
+    font-size: 800%;
   }
   .continue-button {
     border-radius: 10%/20%;
-    margin-top: 5%;
+    margin-top: 10%;
     padding: 2% 4%;
     text-align: center;
-    font-size: 600%;
+    font-size: 800%;
   }
   .showChoiceLabel {
-    margin-top: 5%;
+    margin-top: 10%;
     padding-bottom: 2%;
     text-shadow: 2% 2% 5% #000000;
-    font-size: 600%;
+    font-size: 900%;
   }
   input[type="text"] {
     padding: 2%;
     margin-top: 5%;
-    font-size: 200%;
+    font-size: 300%;
     font-weight: 800;
   }
 }
